@@ -14,13 +14,13 @@ import createHistory from "history/createBrowserHistory";
 import { create } from 'domain';
 
 const history = createHistory();
-let status = false;
+// let status = false;
 class App extends Component {
   render() {
     return (
       <Router history={history}>
         <div>
-          <Header authstatus={status} />
+          <Header />
           <Switch>
             <Route exact path="/" component={LoginUser} />
             <Route path="/sign-in" component={SignInUser} />
@@ -37,9 +37,9 @@ class App extends Component {
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     console.log('Log in');
-    status = true;
+    // status = true;
     if (history.location.pathname === "/") {
-      console.log(status)
+      // console.log(status)
       history.push("/user-dashboard");
     }
 
