@@ -8,7 +8,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        { console.log(this.props.authstatus) }
+  
         <nav>
           <ul className="nav justify-content-end">
             <li className="nav-item">
