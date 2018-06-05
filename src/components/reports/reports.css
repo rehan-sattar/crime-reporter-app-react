@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Muli');
+.customBtn{
+    background-color: #FF863E;
+    color : #fff;
+    border-radius: 0px !important;
+    padding: 0.5em !important;
+}
+h1{
+  font-family: "Comfortaa";
+}

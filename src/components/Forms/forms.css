@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Muli');
+.customBtn{
+    background-color: #FF863E;
+    color : #fff;
+    border-radius: 0px !important;
+    padding: 0.5em !important;
+    font-family: "Comfortaa";
+
+}
+.customBtn:hover{
+    background-color: #fff;;
+    color : #FF863E;
+    border-color: #FF863E;
+    border-radius: 0px !important;
+    padding: 0.5em !important;
+    font-family: "Comfortaa";
+}
+input{
+  font-family: 'Comfortaa';
+  border-radius: 0px !important;
+}
+.customBtn02{
+    background-color: #4f66e9;
+    color : #fff;
+    border-radius: 0px !important;
+    padding: 0.5em !important;
+    font-family: "Comfortaa";
+}
+
+.customBtn02:hover{
+    background-color: #fff;;
+    color : #4f66e9;
+    border-color: #4f66e9;
+    border-radius: 0px !important;
+    padding: 0.5em !important;
+    font-family: "Comfortaa";
+}
