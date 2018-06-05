@@ -23,10 +23,10 @@ class AddMissingPerson extends React.Component {
       userName: '',
       missingPersonName: '',
       email: '',
-      city : '',
+      cityName : '',
       titleOfCompliaint: '',
       description: '',
-      dateOfMissing: ''
+      dateOfMissing: '',
     });
   };
 
@@ -83,7 +83,12 @@ class AddMissingPerson extends React.Component {
                   <label htmlFor="city">
                     <h4>City: </h4>
                   </label>
-                  <select className="form-control form-control-lg my-2" id="city" >
+                  <select 
+                    className="form-control form-control-lg my-2" 
+                    id="city" 
+                    value={this.state.cityName}
+                    onChange={ (e) => this.setState({cityName : e.target.value }) }
+                    >
                     <option value="cityName" className="text-muted">Select City</option>
                     <option value="new york"> New York</option>
                     <option value="los Angeles"> Los Angeles </option>
