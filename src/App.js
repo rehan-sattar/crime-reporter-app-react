@@ -37,9 +37,7 @@ class App extends Component {
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     console.log('Log in');
-    // status = true;
     if (history.location.pathname === "/") {
-      // console.log(status)
       history.push("/user-dashboard");
     }
 

@@ -1,22 +1,27 @@
 import React, { Component } from "react";
-import { fire as firebase } from "../firebase/firebase";
+import firebase from "firebase";
 
 class Complaints extends Component {
 
   constructor() {
     super();
     this.state = {
-      complaints: []
+      complaints: undefined
     }
   }
-  
+
   componentDidMount() {
-    firebase.database().ref().on('value', (snapshote) => {
-      console.log(snapshote.val().complaints);
+    firebase.database().ref('reports').child('complaints').on('value', (snapshot) => {
+      const complaints = [];
+      snapshot.forEach((childSnapshot) => {
+        complaints.push({
+          id: childSnapshot.key,
+          ...childSnapshot.val()
+        });
+      });
       this.setState({
-        complaints: this.state.complaints.concat(snapshote.val().complaints)
+        complaints
       })
-      console.log(this.state);
     });
   }
 
@@ -24,28 +29,27 @@ class Complaints extends Component {
   render() {
     return (
       <div>
-        <div className="container">
-          <div className="row mt-3">
-            <div className="card w-100">
-              <div className="card-body">
-                <h5 className="card-title">Name :{this.state.complaints.name}<br /> Report Title: Complaints </h5>
-                <hr />
-                <h5> Description:  </h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the cardstent.</p>
+        {this.state.complaints === undefined ?
+         <h3 className="text-center my-5">Loading... </h3> : 
+         this.state.complaints.map((item,index) => (
+            (
+              <div className="row mt-3" key={index}>
+                <div className="card w-100">
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      Name : {item.name}
+                      <br /> Report Title:{item.titleOfCompliaint} 
+                      <br /> City Name: {item.cityName}
+                      </h5>
+                    <hr />
+                    <h5> Description:  </h5>
+                    <p className="card-text">{item.description}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="row mt-3">
-            <div className="card w-100">
-              <div className="card-body">
-                <h5 className="card-title">Name : Soha <br /> Report Title: Complaints </h5>
-                <hr />
-                <h5> Description:  </h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the cardstent.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+
+            )
+          ))}
       </div>
     );
   }

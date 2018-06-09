@@ -37,3 +37,4 @@ export function handleMissingPerson(detials) {
       .catch(error => console.log('error: ', error));
   }
 };
+
