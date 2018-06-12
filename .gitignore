@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-
+/src/components/Header/authHeader
 # testing
 /coverage
 

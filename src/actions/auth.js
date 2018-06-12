@@ -5,6 +5,16 @@ export const loginViaGoogle = () => {
   };
 };
 
+
+export const login = (uid) => ({
+  type: 'LOGIN',
+  uid
+});
+
+export const logout = () => ({
+  type: 'LOGOUT'
+})
+
 export const logoutViaGoogle = () => {
   return () => {
     return firebase.auth().signOut();
