@@ -36,7 +36,7 @@ class LoginUser extends Component {
   render() {
     return (
       <div>
-        <div className="container">
+        <div className="container mt-5">
           <h1 className="text-muted text-center"> Login  </h1>
           <div className="row justify-content-center mt-3">
             <div className="col-sm-12 col-md-6 col-lg-6">
@@ -61,7 +61,6 @@ class LoginUser extends Component {
               </form>
               <h3 className="text-muted text-center my-2">OR</h3>
               <button className="btn btn-block mt-3 btn-lg customBtn02" onClick={this.props.startLogin}> Login With Google</button>
-              <p>Dont have Account?</p>
             </div>
           </div>
           {this.state.status === true ? <p className="lead mt-3 text-success text-center">User Logged In Successfully</p> : <p className="lead text-danger mt-3 text-center"> {this.state.error} </p>}

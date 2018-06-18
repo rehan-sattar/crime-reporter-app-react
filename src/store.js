@@ -7,6 +7,6 @@ import authReducer from "./reducers/authReducer";
 export default createStore(
   combineReducers({
     report: reportReducer,
-    auth : authReducer
+    auth : authReducer,
   }), applyMiddleware(thunk, promiseMiddleware())
 );

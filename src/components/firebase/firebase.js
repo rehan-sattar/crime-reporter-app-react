@@ -37,7 +37,6 @@ database.ref().child('reports').child("crime")
         ...childSnapshot.val()
       });
     });
-    console.log("__CRIME ONCE HANDLER__",crimeReports);
   })).catch(error => console.log('Error:', error));
 
 database.ref().child('reports').child("complaints")
@@ -51,7 +50,6 @@ database.ref().child('reports').child("complaints")
         ...childSnapshot.val()
       });
     });
-    console.log("__COMPLAINTS ONCE HANDLER__",crimeReports);
   })).catch(error => console.log('Error:', error));
 
 
@@ -66,7 +64,6 @@ database.ref().child('reports').child("missing-person")
         ...childSnapshot.val()
       });
     });
-    console.log("__MISSING_PERSON ONCE HANDLER__", crimeReports);
   })).catch(error => console.log('Error:', error));
 
 // console.log(database.ref().child("reports").child('missin-person').push({
@@ -88,7 +85,6 @@ database.ref().child('reports').child('crime')
       });
     });
 
-    console.log('ON HANDLER CRIME: ', crimeArray);
   });
 
 
@@ -103,7 +99,6 @@ database.ref().child('reports').child('crime')
       });
     });
 
-    console.log('ON HANDLER COMPLAINTS: ', complaintsArray);
   });
 
 
@@ -117,14 +112,12 @@ database.ref().child('reports').child('crime')
         ...childSnapShot.val()
       });
     });
-
-    console.log('ON HANDLER MISSING_PERSON: ', missingPersonArray);
   });
 
-  
+
 database.ref().child("reports").on('value', (snapshot) => {
   const val = snapshot.val();
-  console.log(val);
+  console.log("FIREBASE LOG: ",val);
 });
 
 

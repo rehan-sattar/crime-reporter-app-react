@@ -15,7 +15,6 @@ import store from "./store"
 import createHistory from "history/createBrowserHistory";
 import { create } from 'domain';
 import { login, logout } from './actions/auth'
-import authHeader from "./components/Header/authHeader";
 import PrivateRoute from './PrivateRoute';
 import BrowserRouter from 'react-router-dom/BrowserRouter';
 const history = createHistory();
@@ -23,7 +22,7 @@ const history = createHistory();
 class App extends Component {
   render() {
     return (
-      <div> 
+      <div>
         <Router history={history}>
           <div>
             <Switch>
@@ -54,3 +53,20 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 })
 export default App;
+
+
+// 1- get user input and City name
+// 2- push data to specific city.auth
+// 3- for example 
+
+// let cityName = 'Karachi';
+// let crime = 'Complaints';
+
+// let detials = {
+//   name: 'Rehan',
+//   email: 'rehanSattar117@gmail.com'
+// }
+// firebase.database().ref('reports').child(cityName).remove(crime);
+
+
+

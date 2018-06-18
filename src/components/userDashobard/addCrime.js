@@ -8,8 +8,10 @@ class AddCrime extends React.Component {
     this.state = {
       name: '',
       email: '',
-      titleOfCompliaint: '',
-      description: ''
+      crimeType: 'crimes',
+      description: '',
+      cityName:''
+
     };
   };
   handleCrimeSubmission(event) {
@@ -19,7 +21,7 @@ class AddCrime extends React.Component {
     this.setState({
       name: '',
       email: '',
-      titleOfCompliaint: '',
+      crimeType: '',
       description: '',
       cityName:''
     })
@@ -84,19 +86,7 @@ class AddCrime extends React.Component {
                     <option value="San Jose">San Jose </option>
                   </select>
                 </div>
-                <div className="form-group">
-                  <label htmlFor="title">
-                    <h4> Title: </h4>
-                  </label>
-                  <input
-                    required
-                    type="text"
-                    id="title"
-                    className="form-control"
-                    value={this.state.titleOfCompliaint}
-                    onChange={(event) => { this.setState({ titleOfCompliaint: event.target.value }) }}
-                  />
-                </div>
+                
 
                 <div className="form-group">
                   <label htmlFor="description">

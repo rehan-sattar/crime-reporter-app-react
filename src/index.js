@@ -4,13 +4,9 @@ import './index.css';
 import App from './App';
 import { Provider } from "react-redux";
 import store from "./store";
+import  { startSetReport } from "./actions/reportActions";
 import "./components/firebase/firebase";
 
 import AppTest from "./AppTest";
-ReactDOM.render(
-<Provider store={store}>
-  <App />
-</Provider>
-  , document.getElementById('root'));
-
-// ReactDOM.render( <AppTest /> , document.getElementById('root'));
+store.dispatch(startSetReport());
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

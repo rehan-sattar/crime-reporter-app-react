@@ -9,8 +9,9 @@ class AddComplaints extends React.Component {
     this.state = {
       name: '',
       email: '',
-      titleOfCompliaint: '',
-      description: ''
+      crimeType: 'complaints',
+      description: '',
+      cityName : ''
     };
   };
 
@@ -84,7 +85,7 @@ class AddComplaints extends React.Component {
                     <option value="San Jose">San Jose </option>
                   </select>
                 </div>
-                <div className="form-group">
+                {/* <div className="form-group">
                   <label htmlFor="title">
                     <h4> Title: </h4>
                   </label>
@@ -95,7 +96,7 @@ class AddComplaints extends React.Component {
                     value={this.state.titleOfCompliaint}
                     onChange={(event) => { this.setState({ titleOfCompliaint: event.target.value }) }}
                   />
-                </div>
+                </div> */}
 
                 <div className="form-group">
                   <label htmlFor="description">

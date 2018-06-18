@@ -10,9 +10,10 @@ class AddMissingPerson extends React.Component {
       userName: '',
       missingPersonName: '',
       email: '',
-      titleOfCompliaint: '',
+      crimeType: 'missing_person',
       description: '',
-      dateOfMissing: ''
+      dateOfMissing: '',
+      cityName: '',
     };
   };
 
@@ -23,8 +24,8 @@ class AddMissingPerson extends React.Component {
       userName: '',
       missingPersonName: '',
       email: '',
-      cityName : '',
-      titleOfCompliaint: '',
+      cityName: '',
+      crimeType: 'missing_person',
       description: '',
       dateOfMissing: '',
     });
@@ -83,12 +84,12 @@ class AddMissingPerson extends React.Component {
                   <label htmlFor="city">
                     <h4>City: </h4>
                   </label>
-                  <select 
-                    className="form-control form-control-lg my-2" 
-                    id="city" 
+                  <select
+                    className="form-control form-control-lg my-2"
+                    id="city"
                     value={this.state.cityName}
-                    onChange={ (e) => this.setState({cityName : e.target.value }) }
-                    >
+                    onChange={(e) => this.setState({ cityName: e.target.value })}
+                  >
                     <option value="cityName" className="text-muted">Select City</option>
                     <option value="new york"> New York</option>
                     <option value="los Angeles"> Los Angeles </option>
@@ -102,19 +103,7 @@ class AddMissingPerson extends React.Component {
                     <option value="San Jose">San Jose </option>
                   </select>
                 </div>
-                <div className="form-group">
-                  <label htmlFor="title">
-                    <h4> Title: </h4>
-                  </label>
-                  <input
-                    required
-                    type="text"
-                    id="title"
-                    className="form-control"
-                    value={this.state.titleOfCompliaint}
-                    onChange={(event) => { this.setState({ titleOfCompliaint: event.target.value }) }}
-                  />
-                </div>
+
                 <div className="form-group">
                   <label htmlFor="date">
                     <h4>Missing Date: </h4>
