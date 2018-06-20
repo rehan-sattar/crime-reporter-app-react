@@ -34,7 +34,7 @@ class MissingPerson extends Component {
     } else {
       this.setState({
         error: 'This city has no reprots related to any crime.',
-        missingPersonArray : undefined
+        missingPersonArray: undefined
       })
       console.log();
     }
@@ -64,12 +64,17 @@ class MissingPerson extends Component {
           this.state.missingPersonArray.map((item, index) => (
             <div className="row mt-3" key={index}>
               <div className="card w-100">
+                <div className="card-header bg-dark text-white text-center">
+                  <div className="card-title">
+                    <h3>Missing Person Reprot: {index + 1}</h3>
+                  </div>
+                </div>
                 <div className="card-body">
-                  <h5 className="card-title">
-                    Name : {item.userName}
-                    <br /> City Name: {item.cityName}
-                    <br /> Missing Person name: {item.missingPersonName}
-                  </h5>
+                  <h5> Name : {item.userName}</h5>
+                  <hr />
+                  <h5> City Name: {item.cityName}</h5>
+                  <hr/>
+                  <h5> Missing Person name: {item.missingPersonName}</h5>
                   <hr />
                   <h5> Description:  </h5>
                   <p className="card-text">{item.description}</p>

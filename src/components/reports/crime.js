@@ -67,11 +67,15 @@ class Crime extends Component {
             (
               <div className="row mt-3" key={index}>
                 <div className="card w-100">
+                  <div className="card-header bg-dark text-white text-center">
+                    <div className="card-title">
+                      <h3>Crime Report: {index + 1}</h3>
+                    </div>
+                  </div>
                   <div className="card-body">
-                    <h5 className="card-title">
-                      Name : {item.name}
-                      <br /> City Name: {item.cityName}
-                    </h5>
+                    <h5>Name : {item.name}</h5>
+                    <hr/>
+                    <h5>City Name: {item.cityName}</h5>
                     <hr />
                     <h5> Description:  </h5>
                     <p className="card-text">{item.description}</p>
@@ -80,7 +84,7 @@ class Crime extends Component {
               </div>
             )
           ))}
-        <h5 className="text-center text-warning">{this.state.error}</h5>
+        <h5 className="text-center text-white">{this.state.error}</h5>
 
       </div>
     );

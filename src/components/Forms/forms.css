@@ -1,37 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Comfortaa|Muli');
-.customBtn{
-    background-color: #FF863E;
-    color : #fff;
-    border-radius: 0px !important;
-    padding: 0.5em !important;
-    font-family: "Comfortaa";
-
-}
-.customBtn:hover{
-    background-color: #fff;;
-    color : #FF863E;
-    border-color: #FF863E;
-    border-radius: 0px !important;
-    padding: 0.5em !important;
-    font-family: "Comfortaa";
-}
-input{
-  font-family: 'Comfortaa';
-  border-radius: 0px !important;
-}
-.customBtn02{
-    background-color: #4f66e9;
-    color : #fff;
-    border-radius: 0px !important;
-    padding: 0.5em !important;
-    font-family: "Comfortaa";
-}
-
-.customBtn02:hover{
-    background-color: #fff;;
-    color : #4f66e9;
-    border-color: #4f66e9;
-    border-radius: 0px !important;
-    padding: 0.5em !important;
-    font-family: "Comfortaa";
+.google_button{
+    background: #D31027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #EA384D, #D31027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #EA384D, #D31027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color : #fff;    
 }

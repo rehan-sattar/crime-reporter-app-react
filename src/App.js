@@ -13,23 +13,22 @@ import {
 } from "react-router-dom";
 import store from "./store"
 import createHistory from "history/createBrowserHistory";
-import { create } from 'domain';
 import { login, logout } from './actions/auth'
-import PrivateRoute from './PrivateRoute';
-import BrowserRouter from 'react-router-dom/BrowserRouter';
+import Header from "./components/Header/Header";
 const history = createHistory();
-// let status = false;
+let status = undefined;
 class App extends Component {
   render() {
     return (
       <div>
         <Router history={history}>
           <div>
+            <Header status = {status} />
             <Switch>
               <Route exact path="/" component={LoginUser} />
-              <PrivateRoute path="/sign-in" component={SignInUser} />
-              <PrivateRoute path="/reports" component={Reports} />
-              <PrivateRoute path="/user-dashboard" component={UserDashboard} />
+              <Route path="/sign-in" component={SignInUser} />
+              <Route path="/reports" component={Reports} />
+              <Route path="/user-dashboard" component={UserDashboard} />
             </Switch>
           </div>
         </Router>
@@ -44,6 +43,7 @@ firebase.auth().onAuthStateChanged((user) => {
     store.dispatch(login(user.uid))
     console.log('Log in');
     if (history.location.pathname === "/") {
+      localStorage.setItem('user',user.uid);
       history.push("/user-dashboard");
     }
 

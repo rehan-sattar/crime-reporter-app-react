@@ -1,23 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Comfortaa|Muli');
-.nav{
-    padding: 0.25em;
-    background-color: #FF863E;
+nav{
+  box-shadow: 0px 0px 10px #000;
 }
-.nav-item{
-  padding : 5px;
-  border-left : 1px solid #fff;
+.brand-logo{
+  color: #fff;
+  text-decoration:  none;
 }
-.nav-link{
-  color: #ffff;
-  font-size: 1.3em;
-  font-family: 'Muli', sans-serif;
-}
-.nav-link:hover{
-  color: #FF863E;
-  background-color: #ffff;
-}
-.heading{
-  color: #FF863E;
-  margin-top: 30px;
-  font-family: 'Comfortaa', cursive;
+.brand-logo:hover{
+  color:#fff;
+  text-decoration:  none;
 }

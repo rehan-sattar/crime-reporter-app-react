@@ -14,22 +14,16 @@ class AllReports extends React.Component {
       <div>
         <Router>
           <div>
-            <div className="container">
-              <h1 className="text-muted text-center">All Reports Are here</h1>
+            <div className="container mt-5">
+              <h1 className="text-white bg-dark text-center">All Reports Are here</h1>
               <hr />
               <div className="row">
-                <div className="col-md-4 col-lg-4 col-sm-12">
-                  <Link className="btn btn-block customBtn btn-lg" to="/reports/crime">Crime Reports</Link>
+                <div className="col-md-4 col-lg-4 col-sm-12 fixed">
+                  <Link className="btn btn-block bg-dark coustum-link btn-lg" to="/reports/crime">Crime Reports</Link>
+                  <Link className="btn btn-block bg-dark coustum-link btn-lg" to="/reports/complaints">Complaints Reports</Link>
+                  <Link className="btn btn-block bg-dark coustum-link btn-lg" to="/reports/missing-person">Missing Person</Link>
                 </div>
-                <div className="col-md-4 col-lg-4 col-sm-12">
-                  <Link className="btn btn-block customBtn btn-lg" to="/reports/complaints">Complaints Reports</Link>
-                </div>
-                <div className="col-md-4 col-lg-4 col-sm-12">
-                  <Link className="btn btn-block customBtn btn-lg" to="/reports/missing-person">Missing Person</Link>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-lg-12 col-md-12 col-sm-12">
+                <div className="col-md-8 col-lg-8 col-sm-12">
                   <Route path="/reports/" exact component={Crime} />
                   <Route path="/reports/crime" component={Crime} />
                   <Route path="/reports/complaints" component={Complaints} />
@@ -38,6 +32,7 @@ class AllReports extends React.Component {
               </div>
             </div>
           </div>
+
         </Router>
       </div>
     )

@@ -33,7 +33,7 @@ class AddComplaints extends React.Component {
       <div>
         <div className="container">
           <div className="card mb-5">
-            <div className="card-header text-white text-center">
+            <div className="card-header bg-dark  text-white text-center">
               <h1> Complaints </h1>
             </div>
             <form onSubmit={this.handleComplaintsReport.bind(this)}>
@@ -85,18 +85,6 @@ class AddComplaints extends React.Component {
                     <option value="San Jose">San Jose </option>
                   </select>
                 </div>
-                {/* <div className="form-group">
-                  <label htmlFor="title">
-                    <h4> Title: </h4>
-                  </label>
-                  <input
-                    type="text"
-                    id="title"
-                    className="form-control"
-                    value={this.state.titleOfCompliaint}
-                    onChange={(event) => { this.setState({ titleOfCompliaint: event.target.value }) }}
-                  />
-                </div> */}
 
                 <div className="form-group">
                   <label htmlFor="description">
@@ -113,7 +101,7 @@ class AddComplaints extends React.Component {
                 </div>
               </div>
               <div className="card-footer">
-                <button className="btn customBtn btn-block">Submit </button>
+                <button className="btn btn-block text-white btn-dark">Submit </button>
               </div>
             </form>
           </div>

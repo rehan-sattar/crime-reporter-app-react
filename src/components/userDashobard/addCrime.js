@@ -32,7 +32,7 @@ class AddCrime extends React.Component {
       <div>
         <div className="container">
           <div className="card mb-5">
-            <div className="card-header text-white text-center">
+            <div className="card-header bg-dark text-white text-center">
               <h1> Crime Report </h1>
             </div>
             <form onSubmit={this.handleCrimeSubmission.bind(this)}>
@@ -104,7 +104,7 @@ class AddCrime extends React.Component {
                 </div>
               </div>
               <div className="card-footer">
-                <button className="btn customBtn btn-block" type="submit">Submit </button>
+                <button className="btn bg-dark text-white btn-block" type="submit">Submit </button>
               </div>
             </form>
           </div>

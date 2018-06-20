@@ -10,22 +10,22 @@ import AddCrime from "./addCrime";
 import AddMissingPerson from "./addMissingReport"
 class AllReports extends React.Component {
     render() {
-        return(
+        return(          
             <div>
               <Router>
                   <div>
-                    <div className="container">
-                      <h1 className="text-muted text-center">Welcome</h1>
+                    <div className="container mt-5">
+                      <h1 className="text-white text-center">Welcome</h1>
                        <hr />
                       <div className="row">
                         <div className="col-md-4 col-lg-4 col-sm-12">
-                          <Link className="btn btn-block customBtn btn-lg" to="/user-dashboard/add-crime/">Crime Report</Link>
+                          <Link className="btn btn-block btn-links bg-dark btn-lg" to="/user-dashboard/add-crime/">Crime Report</Link>
                         </div>
                         <div className="col-md-4 col-lg-4 col-sm-12">
-                          <Link className="btn btn-block customBtn btn-lg" to="/user-dashboard/add-complaints"> Complaints Reports</Link>
+                          <Link className="btn btn-block btn-links bg-dark btn-lg" to="/user-dashboard/add-complaints"> Complaints Reports</Link>
                         </div>
                         <div className="col-md-4 col-lg-4 col-sm-12">
-                          <Link className="btn btn-block customBtn btn-lg" to="/user-dashboard/add-missin-person"> Missing Person</Link>
+                          <Link className="btn btn-block btn-dark btn-links btn-lg" to="/user-dashboard/add-missin-person"> Missing Person</Link>
                         </div>
                       </div>
            

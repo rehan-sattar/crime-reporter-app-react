@@ -1,4 +1,3 @@
-import DatePicker from 'react-date-picker';
 import React from "react";
 import { connect } from "react-redux";
 import { handleMissingPerson } from "../../actions/reportActions";
@@ -36,7 +35,7 @@ class AddMissingPerson extends React.Component {
       <div>
         <div className="container">
           <div className="card mb-5">
-            <div className="card-header text-white text-center">
+            <div className="card-header bg-dark text-white text-center">
               <h1>Missing Person Report </h1>
             </div>
             <form onSubmit={this.hanleMissingPersonReport.bind(this)}>
@@ -132,7 +131,7 @@ class AddMissingPerson extends React.Component {
                 </div>
               </div>
               <div className="card-footer">
-                <button className="btn customBtn btn-block" type="submit">Submit </button>
+                <button className="btn text-white bg-dark btn-block" type="submit">Submit </button>
               </div>
             </form>
           </div>

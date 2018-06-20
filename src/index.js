@@ -6,7 +6,5 @@ import { Provider } from "react-redux";
 import store from "./store";
 import  { startSetReport } from "./actions/reportActions";
 import "./components/firebase/firebase";
-
-import AppTest from "./AppTest";
 store.dispatch(startSetReport());
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
