@@ -1,7 +1,6 @@
 import {
   fire as firebase
 } from "../components/firebase/firebase";
-import { detach } from "retry-axios";
 
 export function handleCrimeReport(details) {
   return (dispatch) => {
