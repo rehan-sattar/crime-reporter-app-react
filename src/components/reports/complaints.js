@@ -66,14 +66,21 @@ class Complaints extends Component {
             (
               <div className="row mt-3" key={index}>
                 <div className="card w-100">
+                  <div className="card-header bg-dark text-white text-center">
+                    <div className="card-title">
+                      <h3>Report # {index + 1 }</h3>
+                    </div>
+                  </div>
                   <div className="card-body">
                     <h5 className="card-title">
                       Name : {item.name}
-                      <br /> City Name: {item.cityName}
                     </h5>
-                    <hr />
+                    <h5> City Name: {item.cityName}</h5>
                     <h5> Description:  </h5>
                     <p className="card-text">{item.description}</p>
+                  </div>
+                  <div className="card-footer"> Status: 
+                      { item.status === undefined? <strong> Pending </strong> : <strong>Approved.</strong>}
                   </div>
                 </div>
               </div>

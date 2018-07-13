@@ -21,7 +21,6 @@ const reportReducer = (state = initialState, action ) => {
       newState.missingPerson.push(action.payload);
       break;
     case "SET_REPORT":
-      console.log('SET_REPORT LOG: ', action.payload)
       return action.payload
   };
   return newState;

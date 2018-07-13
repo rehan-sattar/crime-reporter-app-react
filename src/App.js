@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import LoginUser from "./components/Forms/Login";
 import SignInUser from "./components/Forms/SignIn";
 import Reports from "./components/reports/reports";
@@ -15,6 +14,8 @@ import store from "./store"
 import createHistory from "history/createBrowserHistory";
 import { login, logout } from './actions/auth'
 import Header from "./components/Header/Header";
+import AdminDashboard from "./AdminDashboard/AdminDashboard";
+import Admin_login from "./AdminDashboard/Admin_login";
 const history = createHistory();
 let status = undefined;
 class App extends Component {
@@ -23,10 +24,12 @@ class App extends Component {
       <div>
         <Router history={history}>
           <div>
-            <Header status = {status} />
+            <Header status={status} />
             <Switch>
               <Route exact path="/" component={LoginUser} />
               <Route path="/sign-in" component={SignInUser} />
+              <Route path="/admin-dashboard" component={AdminDashboard} />
+              <Route path="/admin-login" component={Admin_login} />
               <Route path="/reports" component={Reports} />
               <Route path="/user-dashboard" component={UserDashboard} />
             </Switch>
@@ -40,33 +43,14 @@ class App extends Component {
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    store.dispatch(login(user.uid))
-    console.log('Log in');
+    console.log('logged in!');
     if (history.location.pathname === "/") {
-      localStorage.setItem('user',user.uid);
+      localStorage.setItem('user', user.uid);
       history.push("/user-dashboard");
     }
-
   } else {
-    console.log('log out');
+    console.log('Logged out!');
     history.push("/");
   }
 })
 export default App;
-
-
-// 1- get user input and City name
-// 2- push data to specific city.auth
-// 3- for example 
-
-// let cityName = 'Karachi';
-// let crime = 'Complaints';
-
-// let detials = {
-//   name: 'Rehan',
-//   email: 'rehanSattar117@gmail.com'
-// }
-// firebase.database().ref('reports').child(cityName).remove(crime);
-
-
-

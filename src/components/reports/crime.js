@@ -74,11 +74,14 @@ class Crime extends Component {
                   </div>
                   <div className="card-body">
                     <h5>Name : {item.name}</h5>
-                    <hr/>
+                    <hr />
                     <h5>City Name: {item.cityName}</h5>
                     <hr />
                     <h5> Description:  </h5>
                     <p className="card-text">{item.description}</p>
+                  </div>
+                  <div className="card-footer"> Status:
+                      {item.status === undefined ? <strong> Pending </strong> : <strong>Approved.</strong>}
                   </div>
                 </div>
               </div>

@@ -114,12 +114,4 @@ database.ref().child('reports').child('crime')
     });
   });
 
-
-database.ref().child("reports").on('value', (snapshot) => {
-  const val = snapshot.val();
-  console.log("FIREBASE LOG: ",val);
-});
-
-
-
 export { auth, fire, googleAuthProvider };

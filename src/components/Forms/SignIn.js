@@ -31,9 +31,7 @@ class SignInUser extends Component {
           cityName: 'select',
           status: true
         });
-        history.push("/user-dashboard");
       }).catch(error => {
-        // console.log('Error: ', error);
         this.setState({ error: error.message });
       })
     console.log(this.state);
@@ -45,8 +43,8 @@ class SignInUser extends Component {
         <Router history={history}>
             <Route path="/user-dashboard" component={AllReports} />
         </Router>
-        <div className="container">
-          <h1 className="text-center text-muted"> Lets Get Started </h1>
+        <div className="container mt-5">
+          <h1 className="text-center text-white"> <i className="fa fa-users"></i> Lets Get Started </h1>
           <div className="row justify-content-center mt-3">
             <div className="col-sm-12 col-md-6 col-lg-6">
               <form onSubmit={this.createAccount.bind(this)}>
@@ -100,11 +98,11 @@ class SignInUser extends Component {
                   <option value="Dallas"> Dallas </option>
                   <option value="San Jose">San Jose </option>
                 </select>
-                <button className="btn btn-block btn-lg customBtn" type="submit"><h5>Lets Start!</h5></button>
+                <button className="btn btn-block btn-lg bg-dark text-white" type="submit"><h5>Create Account</h5></button>
               </form>
             </div>
           </div>
-          {this.state.status === true ? <p className="lead mt-3 text-center text-success">Account has been created. </p> : <p className="lead text-center mt-3 text-danger">{this.state.error}</p>}
+          {this.state.status === true ? <p className="lead mt-3 text-center text-white"><strong>Congratulations! </strong>Account has been created. Login to continue :)</p> : <p className="lead text-center mt-3 text-danger">{this.state.error}</p>}
         </div>
       </div>
     );
