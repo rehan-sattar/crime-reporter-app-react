@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { fire as firebase } from "../firebase/firebase";
 import { connect } from "react-redux";
 import { BrowserRouter, Route, Link } from "react-router-dom";
-import { loginViaGoogle } from "../../actions/auth";
+import { loginViaGoogle, startLogin } from "../../actions/auth";
 import "./forms.css"
 
 class LoginUser extends Component {
@@ -17,20 +17,7 @@ class LoginUser extends Component {
 
   loginUser(event) {
     event.preventDefault();
-    const { email, password } = this.state;
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(() => {
-        this.setState({
-          email: '',
-          password: '',
-          status: true,
-          error: ''
-        })
-      }).catch(error => {
-        this.setState({
-          error: error.message
-        })
-      })
+    this.props.loginWithEmailAndPassword(this.state);
   }
 
   render() {
@@ -43,10 +30,10 @@ class LoginUser extends Component {
               <div className="col-md-7 col-lg-7 col-sm-12 text-white">
                 <h3 className="display-4"> <i className="fa fa-register"></i> Crime Reporter</h3>
                 <p className="lead">
-                  The System allows the user to check for
-                  crimes without logging in. The User can also check for
-                  missing people. However they cannot view other user
-                 complains. </p>
+                  This App allows user to file complaints or missing reports and keep a
+  track of it. There are 3 categories that a user can file; Complaint, Crime
+  Report and Missing Report and can see all the status of what action has
+been taken by the admin. s </p>
                 <div className="d-flex mt-4">
                   <div className="flex-row">
                     <h5><i className="fa fa-check"></i> </h5>
@@ -60,7 +47,7 @@ class LoginUser extends Component {
                     <h5> <i className="fa fa-check"></i></h5>
                   </div>
                   <div className="flex-row">
-                      <h5 className="leard ml-3">The users can view the 3 kinds of reports by cities.</h5>
+                    <h5 className="leard ml-3">The users can view the 3 kinds of reports by cities.</h5>
                   </div>
                 </div>
                 <div className="d-flex mt-3">
@@ -110,7 +97,10 @@ class LoginUser extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  startLogin: () => dispatch(loginViaGoogle())
+  startLogin: () => dispatch(loginViaGoogle()),
+  loginWithEmailAndPassword: (state) =>  {
+    return dispatch(startLogin(state));
+  }
 });
 
 export default connect(undefined, mapDispatchToProps)(LoginUser);
