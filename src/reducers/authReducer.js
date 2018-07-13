@@ -5,8 +5,15 @@ export default (state = {}, action) => {
       return {
         uid: action.uid
       }
+      break;
+    case 'LOGIN_WITH_EMAIL_PASS':
+      return {
+        uid: action.payload
+      }
+      break;
     case 'LOGOUT':
       return {};
+      break;
     default:
       return state;
   };
