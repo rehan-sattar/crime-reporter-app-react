@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
-import LoginUser from "./components/Forms/Login";
-import SignInUser from "./components/Forms/SignIn";
-import Reports from "./components/reports/reports";
-import UserDashboard from "./components/userDashobard/main";
-import { fire as firebase } from "./components/firebase/firebase";
-import {
-  Router,
-  Route,
-  Switch,
-  Link
-} from "react-router-dom";
-import store from "./store"
-import createHistory from "history/createBrowserHistory";
-import { login, logout } from './actions/auth'
-import Header from "./components/Header/Header";
-import AdminDashboard from "./AdminDashboard/AdminDashboard";
-import Admin_login from "./AdminDashboard/Admin_login";
+import LoginUser from './components/Forms/Login';
+import SignInUser from './components/Forms/SignIn';
+import Reports from './components/reports/reports';
+import UserDashboard from './components/userDashobard/main';
+import { fire as firebase } from './components/firebase/firebase';
+import { Router, Route, Switch, Link } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
+import Header from './components/Header/Header';
+import AdminDashboard from './AdminDashboard/AdminDashboard';
+// import Admin_login from './AdminDashboard/Admin_login';
 const history = createHistory();
 let status = undefined;
 class App extends Component {
@@ -26,12 +19,12 @@ class App extends Component {
           <div>
             <Header status={status} />
             <Switch>
-              <Route exact path="/" component={LoginUser} />
-              <Route path="/sign-in" component={SignInUser} />
-              <Route path="/admin-dashboard" component={AdminDashboard} />
-              <Route path="/admin-login" component={Admin_login} />
-              <Route path="/reports" component={Reports} />
-              <Route path="/user-dashboard" component={UserDashboard} />
+              <Route exact path='/' component={LoginUser} />
+              <Route path='/sign-in' component={SignInUser} />
+              <Route path='/admin-dashboard' component={AdminDashboard} />
+              {/* <Route path='/admin-login' component={Admin_login} /> */}
+              <Route path='/reports' component={Reports} />
+              <Route path='/user-dashboard' component={UserDashboard} />
             </Switch>
           </div>
         </Router>
@@ -40,17 +33,16 @@ class App extends Component {
   }
 }
 
-
-firebase.auth().onAuthStateChanged((user) => {
+firebase.auth().onAuthStateChanged(user => {
   if (user) {
     console.log('logged in!');
-    if (history.location.pathname === "/") {
+    if (history.location.pathname === '/') {
       localStorage.setItem('user', user.uid);
-      history.push("/user-dashboard");
+      history.push('/user-dashboard');
     }
   } else {
     console.log('Logged out!');
-    history.push("/");
+    history.push('/');
   }
-})
+});
 export default App;

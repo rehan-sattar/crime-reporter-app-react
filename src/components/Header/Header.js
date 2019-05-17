@@ -1,86 +1,52 @@
 import React, { Component } from 'react';
-import "./Header.css";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { logoutViaGoogle } from "../../actions/auth";
-class Header extends Component {
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logoutViaGoogle } from '../../actions/auth';
+import './Header.css';
+
+export default class Header extends Component {
   render() {
     return (
       <div>
-
-        {this.props.authState ? (
-          <nav className="navbar py-3 navbar-expand-lg navbar-dark bg-dark">
-
-
-            <Link className="brand-logo" to="/"> <i className="fa fa-address-card"></i> CRIME REPORTER</Link>
-
-            <i data-vi="doc"></i>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item mr-2">
-                  <Link className="nav-link" to="/user-dashboard"><i className="fa fa-address-card"></i> Dashboard</Link>
-                </li>
-                <li className="nav-item mr-2">
-                  <Link className="nav-link" to="/reports"> <i className="fa fa-file alt"></i> Reports</Link>
-                </li>
-                {/* <li className="nav-item mr-2">
-                  <Link className="nav-link" to="/sign-in"> <i className="fa fa-users"></i> Sign in</Link>
-                </li> */}
-                <li className="nav-item mr-2">
-                  <button className="btn btn-sm btn-success" onClick={this.props.logoutViaGoogle}> <i className="fa fa-sign-out-alt"></i> Logout </button>
-                </li>
-              </ul>
+        <nav class='navbar navbar-expand-lg navbar-light bg-dark'>
+          <a class='navbar-brand brand-logo' href='#'>
+            Crime Rates Tracker
+          </a>
+          <button
+            class='navbar-toggler'
+            type='button'
+            data-toggle='collapse'
+            data-target='#navbarNavAltMarkup'
+            aria-controls='navbarNavAltMarkup'
+            aria-expanded='false'
+            aria-label='Toggle navigation'
+          >
+            <span class='navbar-toggler-icon' />
+          </button>
+          <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
+            <div class='navbar-nav'>
+              <a class='nav-item nav-link active' href='#'>
+                Reports <span class='sr-only'>(current)</span>
+              </a>
+              <a class='nav-item nav-link' href='#'>
+                Sign in
+              </a>
             </div>
-          </nav>
-        ) : (
-
-            <nav className="navbar py-3 navbar-expand-lg navbar-dark bg-dark">
-
-
-              <Link className="brand-logo" to="/"> <i className="fa fa-address-card"></i> CRIME REPORTER</Link>
-              
-              <i data-vi="doc"></i>
-              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-              </button>
-
-              <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav ml-auto">
-                  {/* <li className="nav-item mr-2">
-                    <Link className="nav-link" to="/user-dashboard"><i className="fa fa-address-card"></i> Dashboard</Link>
-                  </li> */}
-                  <li className="nav-item mr-2">
-                    <Link className="nav-link" to="/reports"> <i className="fa fa-file alt"></i> Reports</Link>
-                  </li>
-                  <li className="nav-item mr-2">
-                    <Link className="nav-link" to="/sign-in"> <i className="fa fa-users"></i> Sign in</Link>
-                  </li>
-                  <li className="nav-item mr-2">
-                    <button className="btn btn-sm btn-success" onClick={this.props.logoutViaGoogle}> <i className="fa fa-sign-out-alt"></i> Logout </button>
-                  </li>
-                </ul>
-              </div>
-            </nav>
-
-          )}
-
+          </div>
+        </nav>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  logoutViaGoogle: () => dispatch(logoutViaGoogle())
-});
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
+  console.log('STATE: :: ', state);
   return {
     authState: state.auth.uid
-  }
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(Header);

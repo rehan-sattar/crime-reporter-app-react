@@ -1,4 +1,8 @@
-import { fire as firebase, googleAuthProvider } from "../components/firebase/firebase";
+import {
+  fire as firebase,
+  googleAuthProvider
+} from '../components/firebase/firebase';
+
 export const loginViaGoogle = () => {
   console.log('Login Via Google');
   return () => {
@@ -6,42 +10,53 @@ export const loginViaGoogle = () => {
   };
 };
 
-
-export const startLogin = (state) => {
+export const startLogin = state => {
   const { email, password } = state;
-  console.log(email, password);
-  return (dispatch) => {
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((response) => {
-        console.log("User Response: ", response.user);
+  return dispatch => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(response => {
+        console.log('User Response: ', response.user);
         dispatch({
-          type: "LOGIN_WITH_EMAIL_PASS",
+          type: 'LOGIN_WITH_EMAIL_PASS',
           payload: response.user.uid
-        })
-      }).catch(error => {
+        });
+      })
+      .catch(error => {
         dispatch({
-          type: "Error",
+          type: 'Error',
           payload: error.message
-        })
+        });
       });
-  }
-
+  };
 };
 
+export const startSignIn = ({ email, password }) => dispatch => {
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      dispatch({
+        type: 'SOMETHING'
+      });
+    });
+};
 
-export const login = (uid) => ({
+export const login = uid => ({
   type: 'LOGIN',
   uid
 });
 
 export const logout = () => ({
   type: 'LOGOUT'
-})
+});
 
 export const logoutViaGoogle = () => {
   return () => {
     return firebase.auth().signOut();
   };
 };
-
-

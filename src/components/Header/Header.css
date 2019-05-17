@@ -1,11 +1,27 @@
-nav{
+nav {
   box-shadow: 0px 0px 10px #000;
+  background: #000;
+  color: -webkit-linear-gradient(
+    to left,
+    #f5af19,
+    #f12711
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to left, #f5af19, #f12711); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.brand-logo{
+.brand-logo {
+  text-decoration: none;
+  font-family: 'Acme', sans-serif;
+  color: #f3442d !important;
+  text-shadow: 1px 1px 1px #fffdfa;
+  font-size: 2em;
+}
+.brand-logo:hover {
   color: #fff;
-  text-decoration:  none;
+  text-decoration: none;
 }
-.brand-logo:hover{
-  color:#fff;
-  text-decoration:  none;
+
+.nav-link {
+  font-size: 1.3em;
+  color: #fff !important;
+  font-family: 'Acme', sans-serif;
 }
