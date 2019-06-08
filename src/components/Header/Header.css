@@ -13,7 +13,7 @@ nav {
   font-family: 'Acme', sans-serif;
   color: #f3442d !important;
   text-shadow: 1px 1px 1px #fffdfa;
-  font-size: 2em;
+  font-size: 1.2em;
 }
 .brand-logo:hover {
   color: #fff;
@@ -24,4 +24,20 @@ nav {
   font-size: 1.3em;
   color: #fff !important;
   font-family: 'Acme', sans-serif;
+}
+
+.logout-button {
+  height: 30px;
+  width: 100px;
+  background: #f12711;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  margin: 0.5rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.logout-button:focus {
+  outline: none;
 }

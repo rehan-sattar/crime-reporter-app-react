@@ -9,15 +9,29 @@ import createHistory from 'history/createBrowserHistory';
 import Header from './components/Header/Header';
 import AdminDashboard from './AdminDashboard/AdminDashboard';
 // import Admin_login from './AdminDashboard/Admin_login';
-const history = createHistory();
+export const history = createHistory();
 let status = undefined;
 class App extends Component {
+  state = {
+    isAuthenticated: false
+  };
+  componentDidMount() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.setState({
+        isAuthenticated: true
+      });
+    } else {
+      this.setState({ isAuthenticated: false });
+    }
+  }
+
   render() {
     return (
       <div>
         <Router history={history}>
           <div>
-            <Header status={status} />
+            <Header authenticated={this.state.isAuthenticated} />
             <Switch>
               <Route exact path='/' component={LoginUser} />
               <Route path='/sign-in' component={SignInUser} />
@@ -33,16 +47,4 @@ class App extends Component {
   }
 }
 
-firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    console.log('logged in!');
-    if (history.location.pathname === '/') {
-      localStorage.setItem('user', user.uid);
-      history.push('/user-dashboard');
-    }
-  } else {
-    console.log('Logged out!');
-    history.push('/');
-  }
-});
 export default App;

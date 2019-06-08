@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logoutViaGoogle } from '../../actions/auth';
+import { getUserLogout } from '../../actions/auth';
 import './Header.css';
 
 class Header extends Component {
@@ -9,8 +9,8 @@ class Header extends Component {
     authenticated: false
   };
   componentDidMount() {
-    const user = localStorage.getItem('user');
-    if (user) {
+    const token = localStorage.getItem('token');
+    if (token) {
       this.setState({
         authenticated: true
       });
@@ -19,15 +19,18 @@ class Header extends Component {
     }
   }
   render() {
+    const { authenticated } = this.state;
+
     return (
       <div>
         <nav class='navbar navbar-expand-lg navbar-light bg-dark'>
-          <Link to='/'>
-            <a class='navbar-brand brand-logo'>
+          <a class='navbar-brand brand-logo'>
+            <Link to='/' className='brand-logo'>
               <i className='fa fa-address-card mr-2' />
               Crime Rates Tracker
-            </a>
-          </Link>
+            </Link>
+          </a>
+
           <button
             class='navbar-toggler'
             type='button'
@@ -40,14 +43,28 @@ class Header extends Component {
             <span class='navbar-toggler-icon' />
           </button>
           <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
-            <div class='navbar-nav'>
+            <div class='navbar-nav ml-auto'>
               <Link to='/reports' class='nav-item nav-link active'>
                 Reports <span class='sr-only'>(current)</span>
               </Link>
-              <Link to='/sign-in' class='nav-item nav-link'>
-                {' '}
-                Sign in
-              </Link>
+              {authenticated ? (
+                <Link to='/user-dashboard' class='nav-item nav-link active'>
+                  Dashboard
+                </Link>
+              ) : null}
+              {!authenticated ? (
+                <Link to='/sign-in' class='nav-item nav-link'>
+                  {' '}
+                  Sign in
+                </Link>
+              ) : (
+                <button
+                  className='logout-button'
+                  onClick={() => getUserLogout()}
+                >
+                  Logout
+                </button>
+              )}
             </div>
           </div>
         </nav>
@@ -56,10 +73,13 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    authState: state.auth.uid
-  };
-};
+const mapStateToProps = ({ authentication }) => ({
+  token: authentication.token
+});
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = {};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);

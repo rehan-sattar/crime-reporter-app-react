@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { loginViaGoogle, startLogin } from '../../actions/auth';
+import { history } from '../../App';
 import './forms.css';
 
 class LoginUser extends Component {
@@ -17,6 +18,13 @@ class LoginUser extends Component {
   loginUser(event) {
     event.preventDefault();
     this.props.loginWithEmailAndPassword(this.state);
+  }
+
+  componentDidMount() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      history.push('/user-dashboard');
+    }
   }
 
   static AppDetails = () => {

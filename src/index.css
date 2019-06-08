@@ -16,6 +16,6 @@ body {
 }
 
 input {
-  border: none !important;
+  border-radius: none !important;
   outline: none !important;
 }

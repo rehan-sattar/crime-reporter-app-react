@@ -1,14 +1,17 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import promiseMiddleware from "redux-promise-middleware";
-import reportReducer from "./reducers/reportReducer";
-import authReducer from "./reducers/authReducer";
-import AdminReducer from "./reducers/AdminReducer";
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import promiseMiddleware from 'redux-promise-middleware';
+import reportReducer from './reducers/reportReducer';
+import authentication from './reducers/authReducer';
+import AdminReducer from './reducers/AdminReducer';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default createStore(
   combineReducers({
     report: reportReducer,
-    auth : authReducer,
-    admin: AdminReducer
-  }), applyMiddleware(thunk, promiseMiddleware())
+    authentication,
+    AdminReducer
+  }),
+  composeEnhancers(applyMiddleware(thunk))
 );
