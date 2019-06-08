@@ -1,6 +1,10 @@
-.coustum-link{
-  color:  #fff;
+.coustum-link {
+  color: #fff;
 }
-.coustum-link:hover{
-  color:  #fff;
+.coustum-link:hover {
+  color: #fff;
+}
+
+.status {
+  margin-left: 1rem;
 }

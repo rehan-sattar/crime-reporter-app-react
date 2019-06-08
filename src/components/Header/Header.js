@@ -4,14 +4,30 @@ import { connect } from 'react-redux';
 import { logoutViaGoogle } from '../../actions/auth';
 import './Header.css';
 
-export default class Header extends Component {
+class Header extends Component {
+  state = {
+    authenticated: false
+  };
+  componentDidMount() {
+    const user = localStorage.getItem('user');
+    if (user) {
+      this.setState({
+        authenticated: true
+      });
+    } else {
+      this.setState({ authenticated: false });
+    }
+  }
   render() {
     return (
       <div>
         <nav class='navbar navbar-expand-lg navbar-light bg-dark'>
-          <a class='navbar-brand brand-logo' href='#'>
-            Crime Rates Tracker
-          </a>
+          <Link to='/'>
+            <a class='navbar-brand brand-logo'>
+              <i className='fa fa-address-card mr-2' />
+              Crime Rates Tracker
+            </a>
+          </Link>
           <button
             class='navbar-toggler'
             type='button'
@@ -25,12 +41,13 @@ export default class Header extends Component {
           </button>
           <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
             <div class='navbar-nav'>
-              <a class='nav-item nav-link active' href='#'>
+              <Link to='/reports' class='nav-item nav-link active'>
                 Reports <span class='sr-only'>(current)</span>
-              </a>
-              <a class='nav-item nav-link' href='#'>
+              </Link>
+              <Link to='/sign-in' class='nav-item nav-link'>
+                {' '}
                 Sign in
-              </a>
+              </Link>
             </div>
           </div>
         </nav>
@@ -40,13 +57,9 @@ export default class Header extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('STATE: :: ', state);
   return {
     authState: state.auth.uid
   };
 };
 
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(Header);
+export default connect(mapStateToProps)(Header);
