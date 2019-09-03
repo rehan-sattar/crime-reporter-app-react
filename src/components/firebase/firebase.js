@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import firebase from "../admin-dashboard/node_modules/firebase";
 var config = {
   apiKey: "AIzaSyD2YZJe2z4KG5c4cCPQpUEGx7FqFVu6LIw",
   authDomain: "crime-report-application.firebaseapp.com",
@@ -26,45 +26,56 @@ const auth = firebase.auth();
 //   console.log('Successfully Written!');
 // }).catch((error) => console.log(error)))
 
-database.ref().child('reports').child("crime")
-  .once('value')
-  .then((snapshot => {
+database
+  .ref()
+  .child("reports")
+  .child("crime")
+  .once("value")
+  .then(snapshot => {
     const crimeReports = [];
 
-    snapshot.forEach((childSnapshot) => {
+    snapshot.forEach(childSnapshot => {
       crimeReports.push({
         id: childSnapshot.key,
         ...childSnapshot.val()
       });
     });
-  })).catch(error => console.log('Error:', error));
+  })
+  .catch(error => console.log("Error:", error));
 
-database.ref().child('reports').child("complaints")
-  .once('value')
-  .then((snapshot => {
+database
+  .ref()
+  .child("reports")
+  .child("complaints")
+  .once("value")
+  .then(snapshot => {
     const crimeReports = [];
 
-    snapshot.forEach((childSnapshot) => {
+    snapshot.forEach(childSnapshot => {
       crimeReports.push({
         id: childSnapshot.key,
         ...childSnapshot.val()
       });
     });
-  })).catch(error => console.log('Error:', error));
+  })
+  .catch(error => console.log("Error:", error));
 
-
-database.ref().child('reports').child("missing-person")
-  .once('value')
-  .then((snapshot => {
+database
+  .ref()
+  .child("reports")
+  .child("missing-person")
+  .once("value")
+  .then(snapshot => {
     const crimeReports = [];
 
-    snapshot.forEach((childSnapshot) => {
+    snapshot.forEach(childSnapshot => {
       crimeReports.push({
         id: childSnapshot.key,
         ...childSnapshot.val()
       });
     });
-  })).catch(error => console.log('Error:', error));
+  })
+  .catch(error => console.log("Error:", error));
 
 // console.log(database.ref().child("reports").child('missin-person').push({
 //   name: 'Neha',
@@ -73,40 +84,44 @@ database.ref().child('reports').child("missing-person")
 //   console.log('Successfully Written!');
 // }).catch((error) => console.log(error)))
 
-
-database.ref().child('reports').child('crime')
-  .on('value', (snapshot) => {
+database
+  .ref()
+  .child("reports")
+  .child("crime")
+  .on("value", snapshot => {
     const crimeArray = [];
 
-    snapshot.forEach((childSnapShot) => {
+    snapshot.forEach(childSnapShot => {
       crimeArray.push({
         id: childSnapShot.key,
         ...childSnapShot.val()
       });
     });
-
   });
 
-
-  database.ref().child('reports').child('complaints')
-  .on('value', (snapshot) => {
+database
+  .ref()
+  .child("reports")
+  .child("complaints")
+  .on("value", snapshot => {
     const complaintsArray = [];
 
-    snapshot.forEach((childSnapShot) => {
+    snapshot.forEach(childSnapShot => {
       complaintsArray.push({
         id: childSnapShot.key,
         ...childSnapShot.val()
       });
     });
-
   });
 
-
-  database.ref().child('reports').child('crime')
-  .on('value', (snapshot) => {
+database
+  .ref()
+  .child("reports")
+  .child("crime")
+  .on("value", snapshot => {
     const missingPersonArray = [];
 
-    snapshot.forEach((childSnapShot) => {
+    snapshot.forEach(childSnapShot => {
       missingPersonArray.push({
         id: childSnapShot.key,
         ...childSnapShot.val()

@@ -1,20 +1,21 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import LoginUser from "../components/Forms/Login";
-import SignInUser from "../components/Forms/SignIn";
+import { Router, Route } from "react-router-dom";
+import { history } from "../config";
+import LoginUser from "../components/forms/Login";
+import SignInUser from "../components/forms/SignIn";
 
 export default class AppRoutes extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
           <Route exact path="/" component={LoginUser} />
-          <Route path="/sign-in" component={SignInUser} />
-          <Route path="/admin-dashboard" component={AdminDashboard} />
+          <Route path="/signin" component={SignInUser} />
+          <Route path="/admin" component={AdminDashboard} />
           <Route path="/reports" component={Reports} />
-          <Route path="/user-dashboard" component={UserDashboard} />
+          <Route path="/dashboard" component={UserDashboard} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
