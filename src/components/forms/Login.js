@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { authenticate } from '../../store/actions/auth';
 import { history } from '../../config';
-import './forms.css';
-
 class LoginUser extends Component {
   constructor() {
     super();

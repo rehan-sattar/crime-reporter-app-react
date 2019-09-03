@@ -5,17 +5,16 @@ import './Header.css';
 
 const Header = props => {
   const { token } = props;
-  console.log('PROPS:::', props);
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
     if (token || localStorage.getItem('token')) setAuthenticated(true);
-  }, []);
+  }, [token]);
 
   const getUserLogout = () => {};
 
   return (
-    <nav className='navbar navbar-expand-lg navbar-light bg-dark'>
+    <nav className='navbar navbar-expand-lg'>
       <a className='navbar-brand brand-logo'>
         <Link to='/' className='brand-logo'>
           <i className='fa fa-address-card mr-2' />

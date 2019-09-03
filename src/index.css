@@ -1,14 +1,19 @@
 body {
   margin: 0;
   padding: 0;
-  color: #000000bd;
+  color: rgba(0, 0, 0, 0.8);
   font-family: 'Montserrat', sans-serif;
 }
 
 /* overriding of styles */
 
+.form-control {
+  border-radius: 0px;
+  border: none;
+  border-bottom: 1.5px solid rgb(83, 80, 80);
+}
 .form-control:focus {
   box-shadow: none;
   outline: none;
-  border-color: rgba(0, 0, 0, 0.522);
+  border-color: #1976d2;
 }

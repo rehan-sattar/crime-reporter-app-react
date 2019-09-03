@@ -1,19 +1,10 @@
 nav {
   box-shadow: 0px 0px 10px #000;
-  background: #000;
-  color: -webkit-linear-gradient(
-    to left,
-    #f5af19,
-    #f12711
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  /* background: linear-gradient(to left, #f5af19, #f12711); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #1976d2;
 }
 .brand-logo {
+  color: #ffff;
   text-decoration: none;
-  font-family: 'Acme', sans-serif;
-  color: #f3442d !important;
-  text-shadow: 1px 1px 1px #fffdfa;
-  font-size: 1.2em;
 }
 .brand-logo:hover {
   color: #fff;
@@ -21,23 +12,12 @@ nav {
 }
 
 .nav-link {
-  font-size: 1.3em;
+  display: block;
+  height: 40px;
   color: #fff !important;
-  font-family: 'Acme', sans-serif;
+  margin-right: 10px;
 }
 
-.logout-button {
-  height: 30px;
-  width: 100px;
-  background: #f12711;
-  border: none;
-  border-radius: 3px;
-  color: #fff;
-  margin: 0.5rem;
-  cursor: pointer;
-  outline: none;
-}
-
-.logout-button:focus {
-  outline: none;
+.nav-link:hover {
+  border-bottom: 1px solid white;
 }
