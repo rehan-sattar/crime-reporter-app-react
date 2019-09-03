@@ -5,7 +5,7 @@ import { authenticate } from '../../store/actions/auth';
 import useForm from '../../hooks/useForm';
 import CountryDropDown from '../helpers/CountryDropDown';
 
-const SignIn = ({ loading, errMessage }) => {
+const SignIn = ({ loading, errMessage, authenticate }) => {
   const [name, setName] = useForm('');
   const [email, setEmail] = useForm('');
   const [password, setPassword] = useForm('');
@@ -13,13 +13,15 @@ const SignIn = ({ loading, errMessage }) => {
 
   const signIn = e => {
     e.preventDefault();
-    // signin code here
-    console.table({
-      name,
-      email,
-      password,
-      cityName
-    });
+    authenticate(
+      {
+        email,
+        password,
+        name,
+        cityName
+      },
+      'signup'
+    );
   };
 
   return (
@@ -72,4 +74,13 @@ const SignIn = ({ loading, errMessage }) => {
   );
 };
 
-export default SignIn;
+const mapStatToProps = ({ auth }) => ({
+  loading: auth.loading,
+  errMessage: auth.errMessage,
+  token: auth.token
+});
+
+export default connect(
+  mapStatToProps,
+  { authenticate }
+)(SignIn);

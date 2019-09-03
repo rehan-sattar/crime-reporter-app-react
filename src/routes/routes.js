@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Router, Route } from 'react-router-dom';
 import { history } from '../config';
-import SignInUser from '../components/forms/SignIn';
+import SignInUser from '../components/forms/Signup';
 import Home from '../components/home';
 import Header from '../components/navigation/Header';
 
