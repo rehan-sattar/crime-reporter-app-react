@@ -1,34 +1,34 @@
 import React from "react";
 import { connect } from "react-redux";
-import { handleMissingPerson } from "../../actions/reportActions";
+// import { handleMissingPerson } from "../../actions/reportActions";
 import "./styles.css";
 class AddMissingPerson extends React.Component {
   constructor() {
     super();
     this.state = {
-      userName: '',
-      missingPersonName: '',
-      email: '',
-      crimeType: 'missing_person',
-      description: '',
-      dateOfMissing: '',
-      cityName: '',
+      userName: "",
+      missingPersonName: "",
+      email: "",
+      crimeType: "missing_person",
+      description: "",
+      dateOfMissing: "",
+      cityName: ""
     };
-  };
+  }
 
   hanleMissingPersonReport(event) {
     event.preventDefault();
     this.props.submitMissingPersonReport(this.state);
     this.setState({
-      userName: '',
-      missingPersonName: '',
-      email: '',
-      cityName: '',
-      crimeType: 'missing_person',
-      description: '',
-      dateOfMissing: '',
+      userName: "",
+      missingPersonName: "",
+      email: "",
+      cityName: "",
+      crimeType: "missing_person",
+      description: "",
+      dateOfMissing: ""
     });
-  };
+  }
 
   render() {
     return (
@@ -50,7 +50,9 @@ class AddMissingPerson extends React.Component {
                     className="form-control"
                     id="UName"
                     value={this.state.userName}
-                    onChange={(event) => { this.setState({ userName: event.target.value }) }}
+                    onChange={event => {
+                      this.setState({ userName: event.target.value });
+                    }}
                   />
                 </div>
                 <div className="form-group">
@@ -63,7 +65,9 @@ class AddMissingPerson extends React.Component {
                     className="form-control"
                     id="MissingPersonName"
                     value={this.state.missingPersonName}
-                    onChange={(event) => { this.setState({ missingPersonName: event.target.value }) }}
+                    onChange={event => {
+                      this.setState({ missingPersonName: event.target.value });
+                    }}
                   />
                 </div>
                 <div className="form-group">
@@ -76,7 +80,9 @@ class AddMissingPerson extends React.Component {
                     className="form-control"
                     id="email"
                     value={this.state.email}
-                    onChange={(event) => { this.setState({ email: event.target.value }) }}
+                    onChange={event => {
+                      this.setState({ email: event.target.value });
+                    }}
                   />
                 </div>
                 <div className="form-group">
@@ -87,17 +93,19 @@ class AddMissingPerson extends React.Component {
                     className="form-control form-control-lg my-2"
                     id="city"
                     value={this.state.cityName}
-                    onChange={(e) => this.setState({ cityName: e.target.value })}
+                    onChange={e => this.setState({ cityName: e.target.value })}
                   >
-                    <option value="cityName" className="text-muted">Select City</option>
+                    <option value="cityName" className="text-muted">
+                      Select City
+                    </option>
                     <option value="new york"> New York</option>
                     <option value="los Angeles"> Los Angeles </option>
                     <option value="Chicago"> Chicago </option>
                     <option value="houston"> Houston </option>
                     <option value="Philadelphia"> Philadelphia </option>
-                    <option value="phoenix">  Phoenix </option>
-                    <option value="San Antonio">  San Antonio </option>
-                    <option value="San Diego">  San Diego </option>
+                    <option value="phoenix"> Phoenix </option>
+                    <option value="San Antonio"> San Antonio </option>
+                    <option value="San Diego"> San Diego </option>
                     <option value="Dallas"> Dallas </option>
                     <option value="San Jose">San Jose </option>
                   </select>
@@ -112,7 +120,9 @@ class AddMissingPerson extends React.Component {
                     type="date"
                     className="form-control"
                     value={this.state.dateOfMissing}
-                    onChange={(e) => { this.setState({ dateOfMissing: e.target.value }) }}
+                    onChange={e => {
+                      this.setState({ dateOfMissing: e.target.value });
+                    }}
                   />
                 </div>
                 <div className="form-group">
@@ -125,30 +135,39 @@ class AddMissingPerson extends React.Component {
                     id="description"
                     rows="5"
                     value={this.state.description}
-                    onChange={(event) => { this.setState({ description: event.target.value }) }}
-                  >
-                  </textarea>
+                    onChange={event => {
+                      this.setState({ description: event.target.value });
+                    }}
+                  ></textarea>
                 </div>
               </div>
               <div className="card-footer">
-                <button className="btn text-white bg-dark btn-block" type="submit">Submit </button>
+                <button
+                  className="btn text-white bg-dark btn-block"
+                  type="submit"
+                >
+                  Submit{" "}
+                </button>
               </div>
             </form>
           </div>
         </div>
       </div>
-    )
-  };
-};
+    );
+  }
+}
 
 const mapStateToProps = state => {
-  return {}
+  return {};
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    submitMissingPersonReport: details => dispatch(handleMissingPerson(details))
+    // submitMissingPersonReport: details => dispatch(handleMissingPerson(details))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddMissingPerson);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddMissingPerson);

@@ -1,18 +1,22 @@
+import { AUTH_STARTED, AUTH_ERROR, AUTH_SUCCESS } from "./types";
 import { history } from "../../config";
 import firebase from "firebase";
-import { AUTH_ERROR, AUTH_SUCCESS } from "./types";
 
 export const authenticate = ({ email, password, type }) => async dispatch => {
-  let auth = {};
+  dispatchAction(AUTH_STARTED);
+  let authObj = {};
   try {
     if (type === "signup")
-      auth = await firebase
+      authObj = await firebase
         .auth()
         .createUserWithEmailAndPassword(email, password);
-    else if (type === "google")
+    else if (type === "google") {
+      const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
       authObj = await firebase.auth().signInWithPopup(googleAuthProvider);
-    else
-      auth = await firebase.auth().signInWithEmailAndPassword(email, password);
+    } else
+      authObj = await firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password);
     const token = authObj.user.uid;
     localStorage.setItem("token", token);
     history.push("/dashboard");

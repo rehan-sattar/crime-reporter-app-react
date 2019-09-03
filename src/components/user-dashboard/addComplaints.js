@@ -1,32 +1,31 @@
 import React from "react";
-import "./styles.css"
+import "./styles.css";
 import { connect } from "react-redux";
-import { handeComplaints } from "../../actions/reportActions";
+// import { handeComplaints } from "../../actions/reportActions";
 
 class AddComplaints extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: '',
-      email: '',
-      crimeType: 'complaints',
-      description: '',
-      cityName : ''
+      name: "",
+      email: "",
+      crimeType: "complaints",
+      description: "",
+      cityName: ""
     };
-  };
+  }
 
   handleComplaintsReport(event) {
     event.preventDefault();
     this.props.submitComplaintsReport(this.state);
     this.setState({
-      name: '',
-      email: '',
-      titleOfCompliaint: '',
-      description: '',
-      cityName : ''
+      name: "",
+      email: "",
+      titleOfCompliaint: "",
+      description: "",
+      cityName: ""
     });
-  };
-
+  }
 
   render() {
     return (
@@ -47,7 +46,9 @@ class AddComplaints extends React.Component {
                     className="form-control"
                     id="name"
                     value={this.state.name}
-                    onChange={(event) => { this.setState({ name: event.target.value }) }}
+                    onChange={event => {
+                      this.setState({ name: event.target.value });
+                    }}
                   />
                 </div>
                 <div className="form-group">
@@ -59,28 +60,32 @@ class AddComplaints extends React.Component {
                     className="form-control"
                     id="email"
                     value={this.state.email}
-                    onChange={(event) => { this.setState({ email: event.target.value }) }}
+                    onChange={event => {
+                      this.setState({ email: event.target.value });
+                    }}
                   />
                 </div>
                 <div className="form-group">
                   <label htmlFor="city">
                     <h4>City: </h4>
                   </label>
-                  <select 
-                    className="form-control form-control-lg my-2" 
+                  <select
+                    className="form-control form-control-lg my-2"
                     id="city"
                     value={this.state.cityName}
-                    onChange={ (e) => this.setState({cityName : e.target.value }) }
-                    >
-                    <option value="cityName" className="text-muted">Select City</option>
+                    onChange={e => this.setState({ cityName: e.target.value })}
+                  >
+                    <option value="cityName" className="text-muted">
+                      Select City
+                    </option>
                     <option value="new york"> New York</option>
                     <option value="los Angeles"> Los Angeles </option>
                     <option value="Chicago"> Chicago </option>
                     <option value="houston"> Houston </option>
                     <option value="Philadelphia"> Philadelphia </option>
-                    <option value="phoenix">  Phoenix </option>
-                    <option value="San Antonio">  San Antonio </option>
-                    <option value="San Diego">  San Diego </option>
+                    <option value="phoenix"> Phoenix </option>
+                    <option value="San Antonio"> San Antonio </option>
+                    <option value="San Diego"> San Diego </option>
                     <option value="Dallas"> Dallas </option>
                     <option value="San Jose">San Jose </option>
                   </select>
@@ -95,21 +100,24 @@ class AddComplaints extends React.Component {
                     id="description"
                     rows="5"
                     value={this.state.description}
-                    onChange={(event) => { this.setState({ description: event.target.value }) }}
-                  >
-                  </textarea>
+                    onChange={event => {
+                      this.setState({ description: event.target.value });
+                    }}
+                  ></textarea>
                 </div>
               </div>
               <div className="card-footer">
-                <button className="btn btn-block text-white btn-dark">Submit </button>
+                <button className="btn btn-block text-white btn-dark">
+                  Submit{" "}
+                </button>
               </div>
             </form>
           </div>
         </div>
       </div>
     );
-  };
-};
+  }
+}
 
 const mapStateToProps = state => {
   return {};
@@ -117,7 +125,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    submitComplaintsReport: details => dispatch(handeComplaints(details))
+    // submitComplaintsReport: details => dispatch(handeComplaints(details))
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(AddComplaints);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddComplaints);

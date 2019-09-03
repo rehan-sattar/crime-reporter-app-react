@@ -1,11 +1,11 @@
 var initialState = {
-  crimeReports : [],
+  crimeReports: [],
   complaints: [],
   missingPerson: []
 };
 
-const reportReducer = (state = initialState, action ) => {
-  let newState = {...state};
+const reportReducer = (state = initialState, action) => {
+  let newState = { ...state };
   switch (action.type) {
     // crime Case
     case "CRIME_REPORT":
@@ -21,8 +21,8 @@ const reportReducer = (state = initialState, action ) => {
       newState.missingPerson.push(action.payload);
       break;
     case "SET_REPORT":
-      return action.payload
-  };
+      return action.payload;
+  }
   return newState;
 };
 

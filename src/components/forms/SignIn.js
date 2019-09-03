@@ -1,11 +1,6 @@
 import React, { Component } from "react";
-import { Router, Route, Link } from "react-router-dom";
-import { fire as firebase } from "../firebase/firebase";
-import AllReports from "../user-dashboard/main";
-import createHistory from "history/createBrowserHistory";
+import { Link } from "react-router-dom";
 import "./forms.css";
-
-const history = createHistory();
 
 class SignInUser extends Component {
   constructor() {
@@ -24,20 +19,14 @@ class SignInUser extends Component {
   createAccount(event) {
     event.preventDefault();
     const { email, password } = this.state;
-
-    console.log(this.state);
   }
 
   render() {
     return (
       <div>
-        <Router history={history}>
-          <Route path="/user-dashboard" component={AllReports} />
-        </Router>
         <div className="container mt-5">
           <h1 className="text-center text-white">
-            {" "}
-            <i className="fa fa-users" /> Lets Get Started{" "}
+            <i className="fa fa-users" /> Lets Get Started
           </h1>
           <div className="row justify-content-center mt-3">
             <div className="col-sm-12 col-md-6 col-lg-6">
@@ -110,7 +99,7 @@ class SignInUser extends Component {
           </div>
           {this.state.status === true ? (
             <p className="lead mt-3 text-center text-white">
-              <strong>Congratulations! </strong>Account has been created.{" "}
+              <strong>Congratulations! </strong>Account has been created.
               <Link to="/">
                 <span className="login__link">Login</span>
               </Link>

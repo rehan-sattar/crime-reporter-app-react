@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+import * as firebase from "firebase";
 import { Provider } from "react-redux";
+import { configObject } from "./config";
+import App from "./App";
 import store from "./store";
-import { startSetReport } from "./actions/reportActions";
-import "./components/firebase/firebase";
-store.dispatch(startSetReport());
+import "./index.css";
+
+// fireabse configeration.
+firebase.initializeApp(configObject);
 
 ReactDOM.render(
   <Provider store={store}>
