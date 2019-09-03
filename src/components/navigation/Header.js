@@ -1,85 +1,66 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getUserLogout } from '../../actions/auth';
 import './Header.css';
 
-class Header extends Component {
-  state = {
-    authenticated: false
-  };
-  componentDidMount() {
-    const token = localStorage.getItem('token');
-    if (token) {
-      this.setState({
-        authenticated: true
-      });
-    } else {
-      this.setState({ authenticated: false });
-    }
-  }
-  render() {
-    const { authenticated } = this.state;
+const Header = props => {
+  const { token } = props;
+  console.log('PROPS:::', props);
+  const [authenticated, setAuthenticated] = useState(false);
 
-    return (
-      <div>
-        <nav class='navbar navbar-expand-lg navbar-light bg-dark'>
-          <a class='navbar-brand brand-logo'>
-            <Link to='/' className='brand-logo'>
-              <i className='fa fa-address-card mr-2' />
-              Crime Rates Tracker
+  useEffect(() => {
+    if (token || localStorage.getItem('token')) setAuthenticated(true);
+  }, []);
+
+  const getUserLogout = () => {};
+
+  return (
+    <nav className='navbar navbar-expand-lg navbar-light bg-dark'>
+      <a className='navbar-brand brand-logo'>
+        <Link to='/' className='brand-logo'>
+          <i className='fa fa-address-card mr-2' />
+          Crime Rates Tracker
+        </Link>
+      </a>
+
+      <button
+        className='navbar-toggler'
+        type='button'
+        data-toggle='collapse'
+        data-target='#navbarNavAltMarkup'
+        aria-controls='navbarNavAltMarkup'
+        aria-expanded='false'
+        aria-label='Toggle navigation'
+      >
+        <span className='navbar-toggler-icon' />
+      </button>
+      <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
+        <div className='navbar-nav ml-auto'>
+          <Link to='/reports' className='nav-item nav-link active'>
+            Reports <span className='sr-only'>(current)</span>
+          </Link>
+          {authenticated ? (
+            <Link to='/user-dashboard' className='nav-item nav-link active'>
+              Dashboard
             </Link>
-          </a>
-
-          <button
-            class='navbar-toggler'
-            type='button'
-            data-toggle='collapse'
-            data-target='#navbarNavAltMarkup'
-            aria-controls='navbarNavAltMarkup'
-            aria-expanded='false'
-            aria-label='Toggle navigation'
-          >
-            <span class='navbar-toggler-icon' />
-          </button>
-          <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
-            <div class='navbar-nav ml-auto'>
-              <Link to='/reports' class='nav-item nav-link active'>
-                Reports <span class='sr-only'>(current)</span>
-              </Link>
-              {authenticated ? (
-                <Link to='/user-dashboard' class='nav-item nav-link active'>
-                  Dashboard
-                </Link>
-              ) : null}
-              {!authenticated ? (
-                <Link to='/sign-in' class='nav-item nav-link'>
-                  {' '}
-                  Sign in
-                </Link>
-              ) : (
-                <button
-                  className='logout-button'
-                  onClick={() => getUserLogout()}
-                >
-                  Logout
-                </button>
-              )}
-            </div>
-          </div>
-        </nav>
+          ) : null}
+          {!authenticated ? (
+            <Link to='/signin' className='nav-item nav-link'>
+              Sign in
+            </Link>
+          ) : (
+            <button className='logout-button' onClick={getUserLogout}>
+              Logout
+            </button>
+          )}
+        </div>
       </div>
-    );
-  }
-}
+    </nav>
+  );
+};
 
-const mapStateToProps = ({ authentication }) => ({
-  token: authentication.token
+const mapStateToProps = ({ auth }) => ({
+  token: auth.token
 });
 
-const mapDispatchToProps = {};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header);
+export default connect(mapStateToProps)(Header);

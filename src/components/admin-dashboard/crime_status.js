@@ -87,7 +87,7 @@ class Crime_Status extends React.Component {
           this.state.crimeReports.map((item, index) => (
             <div className='row mt-3' key={index}>
               <div className='card w-100'>
-                <div className='card-header bg-dark text-white text-center'>
+                <div className='card-header bg-dark text-center'>
                   <div className='card-title'>
                     <h3>Crime Report: {index + 1}</h3>
                   </div>
@@ -113,7 +113,7 @@ class Crime_Status extends React.Component {
             </div>
           ))
         )}
-        <h5 className='text-center text-white'>{this.state.error}</h5>
+        <h5 className='text-center'>{this.state.error}</h5>
       </div>
     );
   }

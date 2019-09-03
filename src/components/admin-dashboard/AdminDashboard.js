@@ -14,9 +14,7 @@ class AdminDashboard extends React.Component {
       <Router history={history}>
         <div>
           <div className='container mt-5'>
-            <h1 className='text-white text-center'>
-              Welcome to Administration
-            </h1>
+            <h1 className='text-center'>Welcome to Administration</h1>
             <hr />
             <div className='row'>
               <div className='col-md-3 col-lg-3 col-sm-12'>
