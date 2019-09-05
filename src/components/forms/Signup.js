@@ -1,18 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { authenticate } from '../../store/actions/auth';
-import useForm from '../../hooks/useForm';
-import CountryDropDown from '../helpers/CountryDropDown';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { authenticate } from "../../store/actions/auth";
+import useForm from "../../hooks/useForm";
+import CountryDropDown from "../helpers/CountryDropDown";
 
 const SignIn = ({ loading, errMessage, authenticate }) => {
-  const [name, setName] = useForm('');
-  const [email, setEmail] = useForm('');
-  const [password, setPassword] = useForm('');
-  const [cityName, setCityName] = useForm('New York');
-
-  const signIn = e => {
-    e.preventDefault();
+  const { values, handleChange, handleSubmit } = useForm(signIn, {
+    cityName: "New York"
+  });
+  console.log(values);
+  const { name, email, password, cityName } = values;
+  function signIn() {
+    console.log("STATE: ", email, name, password, cityName);
     authenticate(
       {
         email,
@@ -20,52 +20,55 @@ const SignIn = ({ loading, errMessage, authenticate }) => {
         name,
         cityName
       },
-      'signup'
+      "signup"
     );
-  };
-
+  }
   return (
-    <div className='container mt-5'>
-      <h2 className='text-center'>
-        <i className='fa fa-users' /> Create an account here..
+    <div className="container mt-5">
+      <h2 className="text-center">
+        <i className="fa fa-users" /> Create an account here..
       </h2>
-      <div className='row justify-content-center mt-3'>
-        <div className='col-sm-12 col-md-6 col-lg-6'>
-          <form onSubmit={signIn}>
+      <div className="row justify-content-center mt-3">
+        <div className="col-sm-12 col-md-6 col-lg-6">
+          <form onSubmit={handleSubmit}>
             <input
-              type='text'
-              placeholder='Name'
-              className='form-control my-4'
+              type="text"
+              placeholder="Name"
+              className="form-control my-4"
               required
+              name="name"
               value={name}
-              onChange={e => setName(e.target.value)}
+              onChange={handleChange}
             />
             <input
-              type='email'
-              placeholder='Email'
-              className='form-control my-4'
+              type="email"
+              placeholder="Email"
+              className="form-control my-4"
               required
+              name="email"
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={handleChange}
             />
             <input
-              type='password'
-              placeholder='User Password'
-              className='form-control my-4'
+              type="password"
+              placeholder="User Password"
+              className="form-control my-4"
               required
+              name="password"
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={handleChange}
             />
             <CountryDropDown
               value={cityName}
-              onChange={e => setCityName(e.target.value)}
+              onChange={handleChange}
+              name="cityName"
             />
             {errMessage ? <p>{errMessage}</p> : null}
-            <button className='btn btn-block btn-outline-primary mt-4'>
-              {!loading ? 'Signin' : 'Wait a moment....'}
+            <button className="btn btn-block btn-outline-primary mt-4">
+              {!loading ? "Signin" : "Wait a moment...."}
             </button>
-            <p className='mt-3'>
-              Already have an account? <Link to='/'>Login please</Link>{' '}
+            <p className="mt-3">
+              Already have an account? <Link to="/">Login please</Link>{" "}
             </p>
           </form>
         </div>
