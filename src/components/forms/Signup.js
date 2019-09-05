@@ -9,10 +9,8 @@ const SignIn = ({ loading, errMessage, authenticate }) => {
   const { values, handleChange, handleSubmit } = useForm(signIn, {
     cityName: "New York"
   });
-  console.log(values);
   const { name, email, password, cityName } = values;
   function signIn() {
-    console.log("STATE: ", email, name, password, cityName);
     authenticate(
       {
         email,
