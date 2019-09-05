@@ -3,7 +3,7 @@ import Login from "../forms/Login";
 
 const Home = () => {
   return (
-    <div className={styles.wrapper}>
+    <div>
       <React.Fragment>
         <h1 className="heading-main">Crime Rates Tracker</h1>
         <p className="lead description">
