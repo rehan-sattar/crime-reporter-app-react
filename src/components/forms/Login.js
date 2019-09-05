@@ -22,52 +22,46 @@ const Login = ({ authenticate, loading, errMessage }) => {
   }, []);
 
   return (
-    <section className='my-5'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-5 col-lg-5 col-sm-12'>
-            <h1 className='text-center mb-4'>
-              <i className='fa fa-user' /> Login
-            </h1>
-            <form onSubmit={handleSubmit}>
-              <input
-                type='email'
-                placeholder='Email: example@gmail.com'
-                className='form-control form-control-lg my-2'
-                name='email'
-                required
-                value={email}
-                onChange={handleChange}
-              />
-              <input
-                type='password'
-                placeholder='User Password'
-                className='form-control form-control-lg my-3'
-                name='password'
-                required
-                value={password}
-                onChange={handleChange}
-              />
-              <button className='btn btn-block btn-outline-primary'>
-                {loading ? (
-                  `Loging in...`
-                ) : (
-                  <>
-                    Lets Start <i className='fa fa-arrow-right ml-2' />
-                  </>
-                )}
-              </button>
-            </form>
-            <button
-              className='btn btn-block mt-3 btn-danger'
-              onClick={loginVieGoogle}>
-              <i className='fab fa-google mx-2' />
-              Login using Google
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
+    <>
+      <h1 className='text-center mb-4'>
+        <i className='fa fa-user' /> Login
+      </h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type='email'
+          placeholder='Email: example@gmail.com'
+          className='form-control form-control-lg my-2'
+          name='email'
+          required
+          value={email}
+          onChange={handleChange}
+        />
+        <input
+          type='password'
+          placeholder='User Password'
+          className='form-control form-control-lg my-3'
+          name='password'
+          required
+          value={password}
+          onChange={handleChange}
+        />
+        <button className='btn btn-block btn-outline-primary'>
+          {loading ? (
+            `Loging in...`
+          ) : (
+            <>
+              Lets Start <i className='fa fa-arrow-right ml-2' />
+            </>
+          )}
+        </button>
+      </form>
+      <button
+        className='btn btn-block mt-3 btn-danger'
+        onClick={loginVieGoogle}>
+        <i className='fab fa-google mx-2' />
+        Login using Google
+      </button>
+    </>
   );
 };
 

@@ -1,0 +1,17 @@
+.home-wrapper {
+  background-color: #fff;
+  margin-top: 60px;
+  padding: 30px;
+  border-radius: 10px;
+}
+@media screen and (max-width: 400px) {
+  .app-description-section {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .home-wrapper {
+    margin-top: 30px;
+  }
+}
