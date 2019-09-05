@@ -48,7 +48,7 @@ const Login = ({ authenticate, loading, errMessage }) => {
                 value={password}
                 onChange={handleChange}
               />
-              <button className='btn btn-block btn-lg bg-dark login-custom-btn'>
+              <button className='btn btn-block btn-outline-primary'>
                 {loading ? (
                   `Loging in...`
                 ) : (
@@ -58,12 +58,11 @@ const Login = ({ authenticate, loading, errMessage }) => {
                 )}
               </button>
             </form>
-            <h3 className='text-center my-2'>OR</h3>
             <button
-              className='btn btn-block mt-3 google_button btn-lg'
+              className='btn btn-block mt-3 btn-danger'
               onClick={loginVieGoogle}>
-              <i className='fab fa-google mx-1' />
-              Google
+              <i className='fab fa-google mx-2' />
+              Login using Google
             </button>
           </div>
         </div>
