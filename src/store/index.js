@@ -10,7 +10,7 @@ export default createStore(
   }),
   {
     auth: {
-      token: localStorage.getItem('token'),
+      token: localStorage.getItem('token') || '',
       loading: false,
       errMessage: ''
     }

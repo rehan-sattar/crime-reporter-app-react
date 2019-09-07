@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { authenticate } from '../../store/actions/auth';
 import { history } from '../../config';
 import useForm from '../../hooks/useForm';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 
 const Login = ({ authenticate, loading, errMessage }) => {
   const { values, handleChange, handleSubmit } = useForm(login);
@@ -61,6 +62,9 @@ const Login = ({ authenticate, loading, errMessage }) => {
         <i className='fab fa-google mx-2' />
         Login using Google
       </button>
+      <p className='mt-2 text-center'>
+        Dont have account ? <Link to='/signup'>Signup</Link> instead
+      </p>
     </>
   );
 };

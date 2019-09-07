@@ -45,8 +45,8 @@ const Header = props => {
             </>
           ) : null}
           {!authenticated ? (
-            <Link to='/signin' className='nav-item nav-link'>
-              Sign in
+            <Link to='/signup' className='nav-item nav-link'>
+              Signup
             </Link>
           ) : (
             <button className='logout-button' onClick={getUserLogout}>

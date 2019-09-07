@@ -5,7 +5,7 @@ import { authenticate } from '../../store/actions/auth';
 import useForm from '../../hooks/useForm';
 import CountryDropDown from '../helpers/CountryDropDown';
 
-const SignIn = ({ loading, errMessage, authenticate }) => {
+const Signup = ({ loading, errMessage, authenticate }) => {
   const { values, handleChange, handleSubmit } = useForm(signIn, {
     cityName: 'New York'
   });
@@ -84,4 +84,4 @@ const mapStatToProps = ({ auth }) => ({
 export default connect(
   mapStatToProps,
   { authenticate }
-)(SignIn);
+)(Signup);
