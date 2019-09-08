@@ -34,16 +34,6 @@ const Header = props => {
       </button>
       <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
         <div className='navbar-nav ml-auto'>
-          {authenticated ? (
-            <>
-              <Link to='/user-dashboard' className='nav-item nav-link active'>
-                Dashboard
-              </Link>
-              <Link to='/reports' className='nav-item nav-link active'>
-                Reports <span className='sr-only'>(current)</span>
-              </Link>
-            </>
-          ) : null}
           {!authenticated ? (
             <Link to='/signup' className='nav-item nav-link'>
               Signup
