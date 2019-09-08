@@ -51,7 +51,7 @@ export const getUserLogout = callback => dispatch => {
     .then(() => {
       localStorage.removeItem('token');
       dispatch(dispatchAction(AUTH_LOGOUT));
-      callback();
+      history.push('/');
     })
     .catch(err => {
       dispatch(dispatchAction(AUTH_LOGOUT, err.message));

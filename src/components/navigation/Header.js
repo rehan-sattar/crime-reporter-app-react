@@ -12,10 +12,6 @@ const Header = props => {
     if (token || localStorage.getItem('token')) setAuthenticated(true);
   }, [token]);
 
-  const navigateToHome = () => {
-    console.log(props);
-  };
-
   return (
     <nav className='navbar navbar-expand-lg'>
       <a className='navbar-brand brand-logo'>
@@ -42,9 +38,7 @@ const Header = props => {
               Signup
             </Link>
           ) : (
-            <button
-              className='logout-button'
-              onClick={() => props.getUserLogout(navigateToHome)}>
+            <button className='logout-button' onClick={props.getUserLogout}>
               Logout
             </button>
           )}
