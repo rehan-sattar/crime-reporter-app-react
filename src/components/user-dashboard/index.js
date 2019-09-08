@@ -3,7 +3,6 @@ import SidePanel from './SidePanel';
 import ContentPanel from './ContentPanel';
 
 const Dashboard = props => {
-  console.log('Props from Dashboard: ', props);
   return (
     <>
       <div className='container mt-5'>

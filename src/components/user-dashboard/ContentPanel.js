@@ -4,14 +4,18 @@ import ReportsList from './ReportsList';
 import AddReport from './AddReport';
 
 const ContentPanel = props => {
-  console.log(props);
   return (
     <>
       {[
         { path: '/dashboard/', exact: true, component: ReportsList },
         { path: '/dashboard/add', exact: false, component: AddReport }
-      ].map(ro => (
-        <Route path={ro.path} component={ro.component} exact={ro.exact} />
+      ].map((ro, idx) => (
+        <Route
+          key={idx}
+          path={ro.path}
+          component={ro.component}
+          exact={ro.exact}
+        />
       ))}
     </>
   );

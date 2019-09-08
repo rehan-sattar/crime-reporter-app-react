@@ -5,7 +5,7 @@ import Signup from '../components/forms/Signup';
 import Home from '../components/home';
 import Header from '../components/navigation/Header';
 import Dashboard from '../components/user-dashboard';
-// import PrivateRoute from '../hocs/PrivateRoute';
+import PrivateRoute from '../hocs/PrivateRoute';
 
 export default class AppRoutes extends Component {
   render() {
@@ -15,9 +15,7 @@ export default class AppRoutes extends Component {
           <Header />
           <Route exact path='/' component={Home} />
           <Route path='/signup' component={Signup} />
-          <Route path='/dashboard' component={Dashboard} />
-          {/* <Route path="/admin" component={AdminDashboard} />
-          <Route path="/dashboard" component={UserDashboard} /> */}
+          <PrivateRoute path='/dashboard' component={Dashboard} />
         </>
       </Router>
     );

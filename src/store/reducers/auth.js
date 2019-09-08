@@ -11,8 +11,11 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, loading: true };
     case Actions.AUTH_SUCCESS:
       return { ...state, token: payload, loading: false };
+    case Actions.AUTH_LOGOUT:
+      return { ...state, token: '', loading: false };
     case Actions.AUTH_ERROR:
       return { ...state, errMessage: payload, loading: false };
+
     default:
       return state;
   }

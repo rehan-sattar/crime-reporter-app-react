@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { getUserLogout } from '../../store/actions/auth';
 import './Header.css';
 
 const Header = props => {
@@ -11,7 +12,9 @@ const Header = props => {
     if (token || localStorage.getItem('token')) setAuthenticated(true);
   }, [token]);
 
-  const getUserLogout = () => {};
+  const navigateToHome = () => {
+    console.log(props);
+  };
 
   return (
     <nav className='navbar navbar-expand-lg'>
@@ -39,7 +42,9 @@ const Header = props => {
               Signup
             </Link>
           ) : (
-            <button className='logout-button' onClick={getUserLogout}>
+            <button
+              className='logout-button'
+              onClick={() => props.getUserLogout(navigateToHome)}>
               Logout
             </button>
           )}
@@ -53,4 +58,7 @@ const mapStateToProps = ({ auth }) => ({
   token: auth.token
 });
 
-export default connect(mapStateToProps)(Header);
+export default connect(
+  mapStateToProps,
+  { getUserLogout }
+)(Header);

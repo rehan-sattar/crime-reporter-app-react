@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-import Header from '../src/components/Header/Header';
+
 export const PrivateRoute = ({
   isAuthenticated,
   component: Component, // aliasing
@@ -10,14 +10,7 @@ export const PrivateRoute = ({
   <Route
     {...rest}
     component={props =>
-      isAuthenticated ? (
-        <>
-          <Header />
-          <Component {...props} />
-        </>
-      ) : (
-        <Redirect to='/' />
-      )
+      isAuthenticated ? <Component {...props} /> : <Redirect to='/' />
     }
   />
 );

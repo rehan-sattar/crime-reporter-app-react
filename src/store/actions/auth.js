@@ -1,4 +1,4 @@
-import { AUTH_STARTED, AUTH_ERROR, AUTH_SUCCESS } from './types';
+import { AUTH_STARTED, AUTH_ERROR, AUTH_LOGOUT, AUTH_SUCCESS } from './types';
 import { history } from '../../config';
 import firebase from 'firebase';
 
@@ -44,13 +44,17 @@ export const authenticate = (
   }
 };
 
-export const getUserLogout = () => {
-  return firebase
+export const getUserLogout = callback => dispatch => {
+  firebase
     .auth()
     .signOut()
     .then(() => {
       localStorage.removeItem('token');
-      history.push('/');
+      dispatch(dispatchAction(AUTH_LOGOUT));
+      callback();
+    })
+    .catch(err => {
+      dispatch(dispatchAction(AUTH_LOGOUT, err.message));
     });
 };
 

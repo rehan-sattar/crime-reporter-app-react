@@ -1,23 +1,17 @@
-import { fire as firebase } from "../../components/firebase/firebase";
+import { fire as firebase } from '../../components/firebase/firebase';
 
 export function handleCrimeReport(details) {
   return dispatch => {
-    console.log(
-      firebase
-        .database()
-        .ref("reports")
-        .child(details.cityName)
-    );
     firebase
       .database()
-      .ref("reports")
+      .ref('reports')
       .child(details.cityName)
-      .child("crimes")
+      .child('crimes')
       .push(details)
       .then(() => {
-        alert("Successfully submitted!");
+        alert('Successfully submitted!');
         dispatch({
-          type: "CRIME_REPORT",
+          type: 'CRIME_REPORT',
           payload: { ...details }
         });
       });
@@ -28,14 +22,14 @@ export function handeComplaints(details) {
   return dispatch => {
     firebase
       .database()
-      .ref("reports")
+      .ref('reports')
       .child(details.cityName)
-      .child("complaints")
+      .child('complaints')
       .push(details)
       .then(() => {
-        alert("Successfully submitted!");
+        alert('Successfully submitted!');
         dispatch({
-          type: "COMPLAINT_REPORT",
+          type: 'COMPLAINT_REPORT',
           payload: { ...details }
         });
       });
@@ -46,14 +40,14 @@ export function handleMissingPerson(details) {
   return dispatch => {
     firebase
       .database()
-      .ref("reports")
+      .ref('reports')
       .child(details.cityName)
-      .child("missing_person")
+      .child('missing_person')
       .push(details)
       .then(() => {
-        alert("Successfully submitted!");
+        alert('Successfully submitted!');
         dispatch({
-          type: "MISSING_PERSON",
+          type: 'MISSING_PERSON',
           payload: { ...details }
         });
       });
@@ -62,7 +56,7 @@ export function handleMissingPerson(details) {
 
 const setReports = reportType => {
   return {
-    type: "SET_REPORT",
+    type: 'SET_REPORT',
     payload: reportType
   };
 };
@@ -71,8 +65,8 @@ export const startSetReport = () => {
   return dispatch => {
     firebase
       .database()
-      .ref("reports")
-      .on("value", snapshot => {
+      .ref('reports')
+      .on('value', snapshot => {
         dispatch(setReports(snapshot.val()));
       });
   };
