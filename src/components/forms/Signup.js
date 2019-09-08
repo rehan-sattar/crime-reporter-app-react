@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authenticate } from '../../store/actions/auth';
 import useForm from '../../hooks/useForm';
-import CountryDropDown from '../helpers/CountryDropDown';
+import CountryDropDown from '../common/CountryDropDown';
 
 const Signup = ({ loading, errMessage, authenticate }) => {
   const { values, handleChange, handleSubmit } = useForm(signIn, {

@@ -1,8 +1,8 @@
-import * as Actions from "../actions/types";
+import * as Actions from '../actions/types';
 const initialState = {
-  token: "",
+  token: '',
   loading: false,
-  errMessage: ""
+  errMessage: ''
 };
 
 export default (state = initialState, { type, payload }) => {

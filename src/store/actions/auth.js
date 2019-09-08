@@ -4,9 +4,9 @@ import firebase from 'firebase';
 
 /**
  * @function authenticate
- * @description a genral function which handles signup, signin, and google authentication.
+ * @description a general function which handles signup, signIn, and google authentication.
  * @args
- * - data object => { email, password, name. cityname}
+ * - data object => { email, password, name. cityName}
  * - type of authentication => signup, google, login.
  */
 export const authenticate = (
