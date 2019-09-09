@@ -1,7 +1,7 @@
 import { createBrowserHistory } from 'history';
 
 export const history = createBrowserHistory();
-const configObject = {
+export const configObject = {
   apiKey: process.env.REACT_APP_apiKey,
   authDomain: process.env.REACT_APP_authDomain,
   databaseURL: process.env.REACT_APP_databaseURL,
@@ -9,5 +9,3 @@ const configObject = {
   storageBucket: process.env.REACT_APP_storageBucket,
   messagingSenderId: process.env.REACT_APP_messagingSenderId
 };
-console.log(configObject);
-export { configObject };

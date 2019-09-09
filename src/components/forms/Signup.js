@@ -65,9 +65,11 @@ const Signup = ({ loading, errMessage, authenticate }) => {
               onChange={handleChange}
               name='cityName'
             />
-            {errMessage ? <p>{errMessage}</p> : null}
+            {errMessage ? (
+              <p className='text-center text-danger my-2'>{errMessage}</p>
+            ) : null}
             <button className='btn btn-block btn-outline-primary mt-4'>
-              {!loading ? 'Signin' : 'Wait a moment....'}
+              {!loading ? 'Sign In' : 'Wait a moment....'}
             </button>
             <p className='mt-3'>
               Already have an account? <Link to='/'>Login please</Link>{' '}

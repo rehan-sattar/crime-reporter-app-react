@@ -76,7 +76,9 @@ const AddReport = ({ addReport, loading, errMessage }) => {
           type='submit'>
           {loading ? <Spinner heigh={10} width={30} color='#fff' /> : 'Submit'}
         </button>
-        {errMessage && <p className='text-center text-danger'>{errMessage}</p>}
+        {errMessage && (
+          <p className='text-center text-danger my-2'>{errMessage}</p>
+        )}
       </form>
     </>
   );

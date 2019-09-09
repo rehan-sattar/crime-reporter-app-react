@@ -8,9 +8,9 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case Actions.AUTH_STARTED:
-      return { ...state, loading: true };
+      return { ...state, loading: true, errMessage: '' };
     case Actions.AUTH_SUCCESS:
-      return { ...state, token: payload, loading: false };
+      return { ...initialState, token: payload };
     case Actions.AUTH_LOGOUT:
       return { ...state, token: '', loading: false };
     case Actions.AUTH_ERROR:

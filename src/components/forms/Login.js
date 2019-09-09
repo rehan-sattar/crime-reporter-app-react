@@ -67,7 +67,7 @@ const Login = ({ authenticate, loading, errMessage }) => {
         Login using Google
       </button>
       {errMessage ? (
-        <p className='text-center tex-danger'>{errMessage}</p>
+        <p className='text-center text-danger mt-2'>{errMessage}</p>
       ) : null}
       <p className='mt-2 text-center'>
         Don't have account ? <Link to='/signup'>Signup</Link> instead
