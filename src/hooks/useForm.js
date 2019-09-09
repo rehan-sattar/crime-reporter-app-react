@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const useForm = (callback, defaultValues) => {
   const [values, setValues] = useState({ ...defaultValues });
   const handleSubmit = event => {
     if (event) event.preventDefault();
     callback();
+    setValues({ ...defaultValues });
   };
   const handleChange = event => {
     event.persist();

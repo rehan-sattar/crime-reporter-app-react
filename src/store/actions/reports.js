@@ -1,73 +1,38 @@
-import { fire as firebase } from '../../components/firebase/firebase';
+import * as firebase from 'firebase';
+import { useToasts } from 'react-toast-notifications';
+import {
+  ADD_REPORT_STARTED,
+  ADD_REPORT_SUCCESS,
+  ADD_REPORT_ERROR
+} from './types';
 
-export function handleCrimeReport(details) {
-  return dispatch => {
-    firebase
+export const addReport = (
+  { title, reportType, cityName, description },
+  callback
+) => async dispatch => {
+  dispatch({ type: ADD_REPORT_STARTED });
+  const user = firebase.auth().currentUser;
+  const timeStamp = new Date().getTime();
+  const reportData = {
+    title,
+    reportType,
+    cityName,
+    description,
+    createdBy: user.uid,
+    createdAt: timeStamp
+  };
+  try {
+    await firebase
       .database()
-      .ref('reports')
-      .child(details.cityName)
-      .child('crimes')
-      .push(details)
-      .then(() => {
-        alert('Successfully submitted!');
-        dispatch({
-          type: 'CRIME_REPORT',
-          payload: { ...details }
-        });
-      });
-  };
-}
-
-export function handeComplaints(details) {
-  return dispatch => {
-    firebase
-      .database()
-      .ref('reports')
-      .child(details.cityName)
-      .child('complaints')
-      .push(details)
-      .then(() => {
-        alert('Successfully submitted!');
-        dispatch({
-          type: 'COMPLAINT_REPORT',
-          payload: { ...details }
-        });
-      });
-  };
-}
-
-export function handleMissingPerson(details) {
-  return dispatch => {
-    firebase
-      .database()
-      .ref('reports')
-      .child(details.cityName)
-      .child('missing_person')
-      .push(details)
-      .then(() => {
-        alert('Successfully submitted!');
-        dispatch({
-          type: 'MISSING_PERSON',
-          payload: { ...details }
-        });
-      });
-  };
-}
-
-const setReports = reportType => {
-  return {
-    type: 'SET_REPORT',
-    payload: reportType
-  };
-};
-
-export const startSetReport = () => {
-  return dispatch => {
-    firebase
-      .database()
-      .ref('reports')
-      .on('value', snapshot => {
-        dispatch(setReports(snapshot.val()));
-      });
-  };
+      .ref('/reports')
+      .push(reportData);
+    dispatch({ type: ADD_REPORT_SUCCESS });
+    callback('success');
+  } catch (err) {
+    dispatch({
+      type: ADD_REPORT_ERROR,
+      errMessage: 'Something went wrong while adding report.'
+    });
+    callback('error');
+  }
 };

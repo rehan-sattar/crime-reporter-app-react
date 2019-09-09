@@ -1,16 +1,34 @@
 import React from 'react';
+import { ToastProvider, useToasts } from 'react-toast-notifications';
+import { connect } from 'react-redux';
+import { addReport } from '../../store/actions/reports';
+import Spinner from '../common/Spinner';
 import CountryDropDown from '../common/CountryDropDown';
 import useForm from '../../hooks/useForm';
 
-const AddReport = () => {
-  const addReport = () => {
-    console.log('addReport called!');
-  };
-  const { values, handleChange, handleSubmit } = useForm(addReport, {
+const AddReport = ({ addReport, loading, errMessage }) => {
+  const { addToast } = useToasts();
+  const _addReport = () => addReport(values, showAlert);
+  const { values, handleChange, handleSubmit } = useForm(_addReport, {
     cityName: 'New York',
-    reportType: 'crimeReport'
+    reportType: 'crimeReport',
+    title: '',
+    description: ''
   });
-
+  const { title, reportType, cityName, description } = values;
+  const showAlert = type => {
+    if (type === 'error') {
+      addToast('Some Error Occurred', {
+        appearance: 'error',
+        autoDismiss: true
+      });
+    } else {
+      addToast('Reported Successfully', {
+        appearance: 'success',
+        autoDismiss: true
+      });
+    }
+  };
   return (
     <>
       <h3>Add Report</h3>
@@ -21,14 +39,14 @@ const AddReport = () => {
           name='title'
           placeholder='Title'
           className='form-control mb-2'
-          value={values.title}
+          value={title}
           onChange={handleChange}
           required
         />
         <select
           className='form-control'
           name='reportType'
-          value={values.reportType}
+          value={reportType}
           onChange={handleChange}>
           {[
             { type: 'Crime Report', value: 'crime' },
@@ -40,23 +58,38 @@ const AddReport = () => {
             </option>
           ))}
         </select>
-        <CountryDropDown />
+        <CountryDropDown
+          name='cityName'
+          value={cityName}
+          onChange={handleChange}
+        />
         <textarea
           className='form-control'
           name='description'
           placeholder='Description'
           rows='5'
           required
-          value={values.description}
+          value={description}
           onChange={handleChange}></textarea>
         <button
-          className='btn bg-primary text-white mt-3 float-right'
+          className='btn bg-primary text-white mt-3 submit-btn'
           type='submit'>
-          Submit
+          {loading ? <Spinner heigh={10} width={30} color='#fff' /> : 'Submit'}
         </button>
+        {errMessage && <p className='text-center text-danger'>{errMessage}</p>}
       </form>
     </>
   );
 };
 
-export default AddReport;
+const mapStateToProps = ({ reports }) => {
+  return {
+    loading: reports.loading,
+    errMessage: reports.errMessage
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { addReport }
+)(AddReport);

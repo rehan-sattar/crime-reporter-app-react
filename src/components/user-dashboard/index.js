@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToastProvider } from 'react-toast-notifications';
 import SidePanel from './SidePanel';
 import ContentPanel from './ContentPanel';
 
@@ -14,7 +15,9 @@ const Dashboard = props => {
             <SidePanel />
           </div>
           <div className='col-md-9 col-sm-12 col-lg-9'>
-            <ContentPanel {...props} />
+            <ToastProvider>
+              <ContentPanel {...props} />
+            </ToastProvider>
           </div>
         </div>
       </div>

@@ -1,29 +1,19 @@
-var initialState = {
-  crimeReports: [],
-  complaints: [],
-  missingPerson: []
+import * as Actions from '../actions/types';
+const initialState = {
+  loading: false,
+  data: [],
+  errMessage: ''
 };
 
-const reportReducer = (state = initialState, action) => {
-  let newState = { ...state };
-  switch (action.type) {
-    // crime Case
-    case "CRIME_REPORT":
-      newState.crimeReports.push(action.payload);
-      break;
-
-    // complaints case
-    case "COMPLAINT_REPORT":
-      newState.complaints.push(action.payload);
-      break;
-    // missing person case
-    case "MISSING_PERSON":
-      newState.missingPerson.push(action.payload);
-      break;
-    case "SET_REPORT":
-      return action.payload;
+export default (state = initialState, { type, payload }) => {
+  switch (type) {
+    case Actions.ADD_REPORT_STARTED:
+      return { ...state, loading: true, errMessage: '' };
+    case Actions.ADD_REPORT_SUCCESS:
+      return { ...state, loading: false };
+    case Actions.ADD_REPORT_ERROR:
+      return { ...state, loading: false, errMessage: payload };
+    default:
+      return state;
   }
-  return newState;
 };
-
-export default reportReducer;

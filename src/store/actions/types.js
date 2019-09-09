@@ -2,3 +2,7 @@ export const AUTH_STARTED = 'AUTH_STARTED';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
+
+export const ADD_REPORT_STARTED = 'ADD_REPORT_STARTED';
+export const ADD_REPORT_SUCCESS = 'ADD_REPORT_SUCCESS';
+export const ADD_REPORT_ERROR = 'ADD_REPORT_ERROR';
