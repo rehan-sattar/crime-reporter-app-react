@@ -1,0 +1,10 @@
+.form-control {
+  border-radius: 0px;
+  border: none;
+  border-bottom: 1.5px solid rgb(83, 80, 80);
+}
+.form-control:focus {
+  box-shadow: none;
+  outline: none;
+  border-color: #1976d2;
+}

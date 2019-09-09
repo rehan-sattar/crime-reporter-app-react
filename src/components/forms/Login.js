@@ -4,6 +4,7 @@ import { authenticate } from '../../store/actions/auth';
 import { history } from '../../config';
 import { Link } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
+// import './styles.css';
 
 const Login = ({ authenticate, loading, errMessage }) => {
   const { values, handleChange, handleSubmit } = useForm(login);
@@ -30,7 +31,7 @@ const Login = ({ authenticate, loading, errMessage }) => {
       <form onSubmit={handleSubmit}>
         <input
           type='email'
-          placeholder='Email: example@gmail.com'
+          placeholder='example@gmail.com'
           className='form-control form-control-lg my-2'
           name='email'
           required
@@ -39,7 +40,7 @@ const Login = ({ authenticate, loading, errMessage }) => {
         />
         <input
           type='password'
-          placeholder='User Password'
+          placeholder='**********'
           className='form-control form-control-lg my-3'
           name='password'
           required

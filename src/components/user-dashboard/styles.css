@@ -1,0 +1,11 @@
+.link-styles {
+  color: #ffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link-styles:hover {
+  color: #ffff;
+  text-decoration: none;
+  font-weight: bold;
+}
