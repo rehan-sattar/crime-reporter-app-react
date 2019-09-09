@@ -1,11 +1,13 @@
 import { createBrowserHistory } from 'history';
 
 export const history = createBrowserHistory();
-export const configObject = {
-  apiKey: 'AIzaSyD2YZJe2z4KG5c4cCPQpUEGx7FqFVu6LIw',
-  authDomain: 'crime-report-application.firebaseapp.com',
-  databaseURL: 'https://crime-report-application.firebaseio.com',
-  projectId: 'crime-report-application',
-  storageBucket: 'crime-report-application.appspot.com',
-  messagingSenderId: '598590180628'
+const configObject = {
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  databaseURL: process.env.REACT_APP_databaseURL,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId
 };
+console.log(configObject);
+export { configObject };
