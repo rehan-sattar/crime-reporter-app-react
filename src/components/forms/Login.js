@@ -7,7 +7,10 @@ import useForm from '../../hooks/useForm';
 // import './styles.css';
 
 const Login = ({ authenticate, loading, errMessage }) => {
-  const { values, handleChange, handleSubmit } = useForm(login);
+  const { values, handleChange, handleSubmit } = useForm(login, {
+    email: '',
+    password: ''
+  });
   const { email, password } = values;
   // login via google handler.
   function loginVieGoogle() {

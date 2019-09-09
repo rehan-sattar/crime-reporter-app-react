@@ -7,9 +7,10 @@ import './Header.css';
 const Header = props => {
   const { token } = props;
   const [authenticated, setAuthenticated] = useState(false);
-
+  console.log('State: ', token);
   useEffect(() => {
     if (token || localStorage.getItem('token')) setAuthenticated(true);
+    else setAuthenticated(false);
   }, [token]);
 
   return (

@@ -8,7 +8,10 @@ import CountryDropDown from '../common/CountryDropDown';
 
 const Signup = ({ loading, errMessage, authenticate }) => {
   const { values, handleChange, handleSubmit } = useForm(signIn, {
-    cityName: 'New York'
+    cityName: 'New York',
+    name: '',
+    email: '',
+    password: ''
   });
   const { name, email, password, cityName } = values;
   function signIn() {
