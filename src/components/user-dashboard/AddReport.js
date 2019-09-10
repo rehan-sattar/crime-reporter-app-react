@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToastProvider, useToasts } from 'react-toast-notifications';
+import { useToasts } from 'react-toast-notifications';
 import { connect } from 'react-redux';
 import { addReport } from '../../store/actions/reports';
 import Spinner from '../common/Spinner';

@@ -7,7 +7,7 @@ import './Header.css';
 const Header = props => {
   const { token } = props;
   const [authenticated, setAuthenticated] = useState(false);
-  console.log('State: ', token);
+
   useEffect(() => {
     if (token || localStorage.getItem('token')) setAuthenticated(true);
     else setAuthenticated(false);
@@ -15,13 +15,12 @@ const Header = props => {
 
   return (
     <nav className='navbar navbar-expand-lg'>
-      <a className='navbar-brand brand-logo'>
-        <Link to='/' className='brand-logo'>
+      <Link to='/' className='brand-logo'>
+        <span className='navbar-brand brand-logo'>
           <i className='fa fa-address-card mr-2' />
           Crime Rates Tracker
-        </Link>
-      </a>
-
+        </span>
+      </Link>
       <button
         className='navbar-toggler'
         type='button'
@@ -40,7 +39,7 @@ const Header = props => {
             </Link>
           ) : (
             <button className='btn logout-button' onClick={props.getUserLogout}>
-              Logout <i class='fas fa-sign-out-alt mx-2'></i>
+              Logout <i className='fas fa-sign-out-alt mx-2'></i>
             </button>
           )}
         </div>

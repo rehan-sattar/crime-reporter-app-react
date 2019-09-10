@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getAllReports } from '../../store/actions/reports';
 
-const ReportList = () => {
+const ReportList = ({ getAllReports }) => {
+  useEffect(() => {
+    getAllReports();
+  }, [getAllReports]);
   return <div>Report List</div>;
 };
-export default ReportList;
+export default connect(
+  undefined,
+  { getAllReports }
+)(ReportList);
