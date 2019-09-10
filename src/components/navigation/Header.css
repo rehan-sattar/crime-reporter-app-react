@@ -21,3 +21,16 @@ nav {
 .nav-link:hover {
   border-bottom: 1px solid white;
 }
+
+.logout-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ffff;
+}
+
+.logout-button:hover {
+  background-color: #ffff;
+  color: #1976d2;
+  border: 1px solid #ffff;
+}

@@ -39,8 +39,8 @@ const Header = props => {
               Signup
             </Link>
           ) : (
-            <button className='logout-button' onClick={props.getUserLogout}>
-              Logout
+            <button className='btn logout-button' onClick={props.getUserLogout}>
+              Logout <i class='fas fa-sign-out-alt mx-2'></i>
             </button>
           )}
         </div>
