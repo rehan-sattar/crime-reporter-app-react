@@ -7,15 +7,21 @@ const SidePanel = () => {
     <>
       <Link to='/dashboard/' className='link-styles'>
         <button className='btn btn-block btn-primary'>
-          <i className='fa fa-users mx-2'></i>
-          My Reports
+          <i class='fas fa-file-import mx-2'></i> All Reports
         </button>
       </Link>
       <br />
       <Link to='/dashboard/add' className='link-styles'>
         <button className='btn btn-block btn-primary'>
-          <i className='fa fa-plus mx-2'></i>
-          Add New
+          <i class='fas fa-file-medical mx-2'></i>
+          Add Reports
+        </button>
+      </Link>
+      <br />
+      <Link to='/dashboard/user-reports' className='link-styles'>
+        <button className='btn btn-block btn-primary'>
+          <i class='fas fa-file-download mx-2'></i>
+          My Reports
         </button>
       </Link>
     </>
