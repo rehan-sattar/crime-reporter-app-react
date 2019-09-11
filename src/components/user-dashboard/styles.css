@@ -13,3 +13,24 @@
 .submit-btn {
   min-width: 85px;
 }
+.spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.report {
+  background: #ffffff;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: -2px 3px 5px 0px rgba(0, 0, 0, 0.241);
+}
+
+@media screen and (max-width: 768px) {
+  .reports-container,
+  .user-reports-container,
+  .add-report-form {
+    margin: 50px 0 30px 0;
+  }
+}

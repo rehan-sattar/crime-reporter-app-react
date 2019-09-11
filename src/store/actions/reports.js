@@ -2,7 +2,10 @@ import * as firebase from 'firebase';
 import {
   ADD_REPORT_STARTED,
   ADD_REPORT_SUCCESS,
-  ADD_REPORT_ERROR
+  ADD_REPORT_ERROR,
+  FETCH_REPORTS_STARTED,
+  FETCH_REPORTS_SUCCESS,
+  FETCH_REPORTS_ERROR
 } from './types';
 
 export const addReport = (
@@ -38,16 +41,17 @@ export const addReport = (
 
 export const getAllReports = () => async dispatch => {
   try {
+    dispatch({ type: FETCH_REPORTS_STARTED });
     firebase
       .database()
       .ref('/reports')
       .on('value', snapshot => {
         const dataObj = snapshot.val();
         const data = sortAndFormatData(dataObj);
-        console.log('DATA: ', data);
+        dispatch({ type: FETCH_REPORTS_SUCCESS, payload: data });
       });
   } catch (err) {
-    console.log(err);
+    dispatch({ type: FETCH_REPORTS_ERROR, payload: err.message });
   }
 };
 

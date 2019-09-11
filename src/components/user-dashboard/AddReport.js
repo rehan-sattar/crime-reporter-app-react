@@ -30,7 +30,7 @@ const AddReport = ({ addReport, loading, errMessage }) => {
     }
   };
   return (
-    <>
+    <div className='add-report-form'>
       <h3>Add Report</h3>
       <hr />
       <form onSubmit={handleSubmit}>
@@ -47,7 +47,8 @@ const AddReport = ({ addReport, loading, errMessage }) => {
           className='form-control'
           name='reportType'
           value={reportType}
-          onChange={handleChange}>
+          onChange={handleChange}
+        >
           {[
             { type: 'Crime Report', value: 'crime' },
             { type: 'Missing Person Report', value: 'missingPerson' },
@@ -70,17 +71,19 @@ const AddReport = ({ addReport, loading, errMessage }) => {
           rows='5'
           required
           value={description}
-          onChange={handleChange}></textarea>
+          onChange={handleChange}
+        ></textarea>
         <button
           className='btn bg-primary text-white mt-3 submit-btn'
-          type='submit'>
+          type='submit'
+        >
           {loading ? <Spinner heigh={10} width={30} color='#fff' /> : 'Submit'}
         </button>
         {errMessage && (
           <p className='text-center text-danger my-2'>{errMessage}</p>
         )}
       </form>
-    </>
+    </div>
   );
 };
 
