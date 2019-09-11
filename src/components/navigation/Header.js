@@ -14,7 +14,7 @@ const Header = props => {
   }, [token]);
 
   return (
-    <nav className='navbar navbar-expand-lg'>
+    <nav className='navbar navbar-dark navbar-expand-lg'>
       <Link to='/' className='brand-logo'>
         <span className='navbar-brand brand-logo'>
           <i className='fa fa-address-card mr-2' />
@@ -28,7 +28,8 @@ const Header = props => {
         data-target='#navbarNavAltMarkup'
         aria-controls='navbarNavAltMarkup'
         aria-expanded='false'
-        aria-label='Toggle navigation'>
+        aria-label='Toggle navigation'
+      >
         <span className='navbar-toggler-icon' />
       </button>
       <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
