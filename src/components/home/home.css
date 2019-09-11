@@ -4,7 +4,7 @@
   padding: 30px;
   border-radius: 10px;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .app-description-section {
     display: none;
   }
