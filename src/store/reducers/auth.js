@@ -15,7 +15,6 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, token: '', loading: false };
     case Actions.AUTH_ERROR:
       return { ...state, errMessage: payload, loading: false };
-
     default:
       return state;
   }

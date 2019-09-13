@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getAllReports } from '../../store/actions/reports';
+import { getReports } from '../../store/actions/reports';
 import Spinner from '../common/Spinner';
 import Report from './Report';
 
-const ReportList = ({ getAllReports, reports, fetching }) => {
+const ReportList = ({ getReports, reports, fetching, filterUserReports }) => {
   useEffect(() => {
-    getAllReports();
-  }, [getAllReports]);
+    getReports(filterUserReports);
+  }, [getReports, filterUserReports]);
 
   const renderLoader = () => (
     <div className='spinner-container'>
@@ -20,7 +20,6 @@ const ReportList = ({ getAllReports, reports, fetching }) => {
     ) : (
       <p>No Reports.</p>
     );
-
   return (
     <div className='reports-container'>
       {fetching ? renderLoader() : renderReports(reports)}
@@ -34,5 +33,5 @@ const mapStateToProps = ({ reports }) => ({
 });
 export default connect(
   mapStateToProps,
-  { getAllReports }
+  { getReports }
 )(ReportList);

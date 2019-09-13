@@ -1,4 +1,5 @@
 import * as firebase from 'firebase';
+import { sortAndFormatData } from './utils';
 import {
   ADD_REPORT_STARTED,
   ADD_REPORT_SUCCESS,
@@ -39,34 +40,27 @@ export const addReport = (
   }
 };
 
-export const getAllReports = () => async dispatch => {
+export const getReports = filterUserReports => async dispatch => {
   try {
     dispatch({ type: FETCH_REPORTS_STARTED });
+    const user = firebase.auth().currentUser;
+    const uid = user ? user.uid : localStorage.getItem('token');
     firebase
       .database()
       .ref('/reports')
       .on('value', snapshot => {
         const dataObj = snapshot.val();
         const data = sortAndFormatData(dataObj);
-        dispatch({ type: FETCH_REPORTS_SUCCESS, payload: data });
+        if (filterUserReports) {
+          dispatch({
+            type: FETCH_REPORTS_SUCCESS,
+            payload: [...data.filter(r => r.createdBy === uid)]
+          });
+        } else {
+          dispatch({ type: FETCH_REPORTS_SUCCESS, payload: data });
+        }
       });
   } catch (err) {
     dispatch({ type: FETCH_REPORTS_ERROR, payload: err.message });
-  }
-};
-
-const sortAndFormatData = dataObj => {
-  let data = [];
-  if (dataObj) {
-    for (let [id, props] of Object.entries(dataObj)) {
-      data.push({
-        ...props,
-        id,
-        createdAt: new Date(props.createdAt)
-      });
-    }
-    return data.sort((x, y) => y.createdAt - x.createdAt);
-  } else {
-    return data;
   }
 };
