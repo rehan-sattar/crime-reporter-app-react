@@ -1,6 +1,6 @@
 # Crime Reporter Application - React with Firebase
 
-## includes
+## This applicaiton includes
 
 - Firebase authentication
 - Firebase Realtime Databse
